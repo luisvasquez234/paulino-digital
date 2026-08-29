@@ -1,0 +1,344 @@
+<title>Tarjeta Paulino Digital</title>
+<style>
+  :root {
+    --bg: #F0ECE3;
+    --text-on-bg: #1C2430;
+    --text-on-bg-soft: #5B6472;
+    --gold: #D4AF37;
+    --gold-light: #F2DE9A;
+    --gold-dark: #9C7A24;
+    --jet: #0A0A0A;
+    --jet-2: #141414;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0E141C;
+      --text-on-bg: #ECE7D8;
+      --text-on-bg-soft: #9BA3AE;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0E141C;
+    --text-on-bg: #ECE7D8;
+    --text-on-bg-soft: #9BA3AE;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text-on-bg);
+    font-family: Georgia, 'Times New Roman', serif;
+  }
+  .wrap { max-width: 940px; margin: 0 auto; padding: 40px 24px 60px; }
+
+  .instructions {
+    max-width: 60ch;
+    margin: 0 auto 36px;
+    text-align: center;
+  }
+  .instructions .eyebrow {
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    font-size: 0.7rem;
+    color: var(--gold-dark);
+    font-weight: 600;
+  }
+  .instructions h1 {
+    font-family: Georgia, serif;
+    font-size: 1.5rem;
+    margin: 10px 0 12px;
+    letter-spacing: 0.01em;
+  }
+  .instructions p {
+    color: var(--text-on-bg-soft);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+  .sheet-label {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 0.72rem;
+    color: var(--text-on-bg-soft);
+    margin: 40px 0 14px;
+  }
+
+  .sheet {
+    display: grid;
+    grid-template-columns: repeat(2, 3.5in);
+    justify-content: center;
+    gap: 0;
+    background: #fff;
+    padding: 24px;
+    box-shadow: 0 20px 40px -20px rgba(0,0,0,0.25);
+    margin: 0 auto;
+  }
+
+  /* ---------- gold text ---------- */
+  .foil {
+    background: linear-gradient(115deg, var(--gold-dark) 15%, var(--gold-light) 45%, var(--gold) 60%, var(--gold-dark) 85%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* ---------- card front ---------- */
+  .card {
+    width: 3.5in;
+    height: 2in;
+    background: var(--jet);
+    background-image:
+      radial-gradient(120% 100% at 30% 0%, rgba(212,175,55,0.08), transparent 60%),
+      repeating-linear-gradient(120deg, rgba(255,255,255,0.015) 0 1px, transparent 1px 3px);
+    color: #EDEAE2;
+    position: relative;
+    overflow: hidden;
+    border: 1px dashed #cfcabf;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .card-frame {
+    position: absolute;
+    inset: 0.09in;
+    border: 1px solid rgba(212,175,55,0.55);
+    pointer-events: none;
+  }
+  .card-frame::before {
+    content: "";
+    position: absolute;
+    inset: 4px;
+    border: 1px solid rgba(212,175,55,0.28);
+  }
+
+  .monogram-ring {
+    width: 0.56in;
+    height: 0.56in;
+    border-radius: 50%;
+    border: 1px solid var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .monogram-ring::before {
+    content: "";
+    position: absolute;
+    inset: 4px;
+    border: 1px solid rgba(212,175,55,0.45);
+    border-radius: 50%;
+  }
+  .monogram-ring span {
+    font-family: Georgia, serif;
+    font-size: 0.26in;
+    letter-spacing: -0.03em;
+    font-weight: 400;
+  }
+
+  .card-brand-line {
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.32em;
+    font-size: 0.5rem;
+    color: var(--gold-light);
+    margin-top: 0.1in;
+  }
+  .card-rule-gold {
+    width: 0.5in;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 0.09in 0;
+  }
+  .card-name-lux {
+    font-family: Georgia, serif;
+    font-size: 1.05rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #fff;
+  }
+  .card-tagline-lux {
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: 0.62rem;
+    color: #B9AF98;
+    margin-top: 0.06in;
+    letter-spacing: 0.02em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .card-tagline-lux svg {
+    width: 0.13in;
+    height: 0.13in;
+    color: var(--gold);
+    flex-shrink: 0;
+  }
+  .card-phone-lux {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.66rem;
+    letter-spacing: 0.06em;
+    color: var(--gold-light);
+    margin-top: 0.1in;
+  }
+
+  .card-qr-lux {
+    position: absolute;
+    right: 0.12in;
+    bottom: 0.12in;
+    background: #fff;
+    padding: 0.045in;
+    border: 1px solid var(--gold);
+    display: flex;
+  }
+  .card-qr-lux img {
+    display: block;
+    width: 0.5in;
+    height: 0.5in;
+    image-rendering: pixelated;
+  }
+  .card-scan-lux {
+    position: absolute;
+    left: 0.14in;
+    bottom: 0.15in;
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-size: 0.42rem;
+    color: var(--gold-dark);
+    writing-mode: vertical-rl;
+  }
+
+  /* ---------- back of card ---------- */
+  .card-back {
+    width: 3.5in;
+    height: 2in;
+    background: var(--jet);
+    background-image: radial-gradient(120% 120% at 50% 50%, rgba(212,175,55,0.06), transparent 65%);
+    color: #EDEAE2;
+    border: 1px dashed #cfcabf;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .card-back .card-frame { inset: 0.09in; }
+  .card-back .monogram-ring { width: 0.7in; height: 0.7in; }
+  .card-back .monogram-ring span { font-size: 0.32in; }
+  .card-back .back-brand-lux {
+    font-family: Georgia, serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #fff;
+    margin-top: 0.14in;
+  }
+  .card-back .back-tag-lux {
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    font-size: 0.46rem;
+    color: var(--gold-dark);
+    margin-top: 0.08in;
+  }
+  .back-icon-row {
+    display: flex;
+    align-items: center;
+    gap: 0.22in;
+    margin-top: 0.16in;
+  }
+  .back-icon-row .back-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+  .back-icon-row svg {
+    width: 0.2in;
+    height: 0.2in;
+    color: var(--gold);
+  }
+  .back-icon-row span {
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 0.38rem;
+    color: #B9AF98;
+  }
+
+  .screen-only { display: block; }
+
+  @media print {
+    @page { size: letter; margin: 0.5in; }
+    body { background: #fff; }
+    .screen-only { display: none !important; }
+    .wrap { padding: 0; max-width: none; }
+    .sheet { box-shadow: none; padding: 0; }
+    .sheet-label { display: none; }
+  }
+</style>
+
+<div class="wrap">
+  <div class="instructions screen-only">
+    <p class="eyebrow">Paulino Digital</p>
+    <h1>Hoja de tarjetas — edición negro &amp; oro</h1>
+    <p>Imprime esta página en cartulina negra o blanca gruesa (Ctrl/Cmd + P). Salen 8 tarjetas de 3.5" × 2" por cada lado — corta por las líneas punteadas. El código QR abre un WhatsApp con tu número ya listo para escribirte.</p>
+    <p><strong>Para que el negro y el dorado se vean realmente premium</strong>, esta es de las pocas tarjetas que vale la pena mandar a imprimir en una imprenta real (Vistaprint, UPrinting, Staples) sobre papel negro grueso — impresa en casa el negro sale gris y pierde el efecto de lujo. Guarda esta página como PDF desde el cuadro de impresión y súbela ahí.</p>
+  </div>
+
+  <p class="sheet-label screen-only">Frente</p>
+  <div class="sheet" id="sheet-front">
+    <div class="card">
+      <div class="card-frame"></div>
+      <div class="monogram-ring"><span class="foil">PD</span></div>
+      <div class="card-brand-line foil">Paulino Digital</div>
+      <div class="card-rule-gold"></div>
+      <div class="card-name-lux">Luis</div>
+      <div class="card-tagline-lux"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg>Diseño web &amp; sistemas digitales</div>
+      <div class="card-phone-lux">(978) 690-7277 &nbsp;·&nbsp; Lawrence, MA</div>
+      <div class="card-scan-lux">Escanea</div>
+      <div class="card-qr-lux">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfQAAAH0AQMAAADxGE3JAAAABlBMVEX///8AAABVwtN+AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAEYUlEQVR4nO2dQY6zMAyFjVh0yRE4CkejR+tROAJLFogM9rOTtPPrX3SqCdI8SwwqyRc2L5FjO4wI7W9bClvOH2NK93G35/Oqfzu0bSKTX+NWkJU8+Z/yD9fhold/Pj35QRvBerOxuZuUV5An35a/mcDBnvrXlmFH4znOQy/Mg9fXkCd/LV6FPXqDWWf6nzAPrFt+FXnyV+PVzjFmvfv6rU7GlA4dQ6TuSp78R3goFfrtzf9V/n5q967azVo27aIrfpMn354PO1lbe3UM8x9Ofjh1f94ft0P9X50q/9n/kSf/+3yx3hzcWcU9YA8H/XfRvZ4D/zDy5H+fh/+RUsTPwv+4S+V/IHb2rP+dPPlP8FiDde01p9YbbQyPg+krHt59Can3JX5LnnwrPicVIv41Qt7qO1iz7d2wf5tSCu2bqyzkyTfma/2rzRZY8EbV/8kKlni8KqUIkwl58lfg7aGJWrB/08U5uf6f/V+dKtG9xC/Ik3+Tz+IUKf7v6s7BcETuwKSakD/I2hXy5K/ALzfjbKAc/8I+7mE5MORvJ+QggIX/S558Qz7iD/ZgEUH+tkf+IfZvyONa/EHkuVSBPPmWfC7sMu177tfssBwE8r/pKXc2oquQJ/9TPicELP4VY+zmO+BSNq+/qD/AGHfy5Fvz5hCooJUZo/673r8hBmZ+A1wNdCdP/gJ8rX9wu8fAOvgORf/mQzivXcmTvwbvgrYxRuTNSv63y75HKrUzJX5LnvwPeCsssA6lfiutUYPgtds3u4of/LL/Ik++NW/1h9EwRP3BAf9h6yKGG6lemzIrefKteZGs/6f4w1rVf9/g/1ZTBV3Ik2/M104FimLK+g3z+pktlyqgaz6/QJ78+7w5Bbap8vqD5Pswa/T47dbBf9gk6g+0kTz55rxqudQf7n7+IAfHvOYQ+reu0H4V/yVPvh0P86CsjqFr+IAYhMVwo4Ym6g7U6v0befIteRc2RF2dW7D8r3bwONr2dNT8Zf9Hnvz7vNno52eWEKfvvzwPJhHq3czNsNcJefKNee1bHkb+C7Ev1f8U57+idguvyvonT74ln4tixz0HFzQGETm0h/apvl9gr6zrv8mTb8jn8zfuVIDdy9mv4Sj1MyKIP/hSv5In/wk+TPkxzh6o39D59wsh88mXajPy5C/Ag3P/IS+svZ89KENPynj8VkTIk78Gnxs8OJsQ2Jo9f4suR33MIYfKyJNvzSOp68kF6bP/Medz487e8mswRrX+kyf/Ll+sfP8N/gN0PK2Fzfdv+Qfy5NvwKWxB/Os+ppz/ug9RO9Nhivi1oNRWyJNvzj/8vkT9N+ZCrj+Mc2Cv+n/Z/5En34bHQ+QeMA9QA1b5H+m7LeLvJU/+Q3w+/yX4fkby7xdYHCzit3CTRciTvyIvUr5fEPkv6WKLZ7ofU+0/kCffkvf74v6v/ept3Z6T/v+uI9d/i3j8QacJefJX4MMW1M6q4fxi6D/8kFRywLHMkyffmKf9ZfsC08gGjGIoSH8AAAAASUVORK5CYII=" alt="QR para WhatsApp">
+      </div>
+    </div>
+  </div>
+
+  <p class="sheet-label screen-only">Reverso</p>
+  <div class="sheet" id="sheet-back">
+    <div class="card-back">
+      <div class="card-frame"></div>
+      <div class="monogram-ring"><span class="foil">PD</span></div>
+      <div class="back-brand-lux">Paulino Digital</div>
+      <div class="back-tag-lux">Diseño web · Sistemas digitales</div>
+      <div class="back-icon-row">
+        <div class="back-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg>
+          <span>Web</span>
+        </div>
+        <div class="back-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M8 6 3 12l5 6M16 6l5 6-5 6"/></svg>
+          <span>Sistemas</span>
+        </div>
+        <div class="back-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="14" rx="1.5"/><path d="M8 21h8M12 18v3"/></svg>
+          <span>Soporte</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  var front = document.querySelector('#sheet-front .card');
+  var frontSheet = document.getElementById('sheet-front');
+  for (var i = 0; i < 7; i++) frontSheet.appendChild(front.cloneNode(true));
+
+  var back = document.querySelector('#sheet-back .card-back');
+  var backSheet = document.getElementById('sheet-back');
+  for (var j = 0; j < 7; j++) backSheet.appendChild(back.cloneNode(true));
+</script>
