@@ -1,4 +1,23 @@
+<meta charset="UTF-8">
 <title>Paulino Digital</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Paulino Digital",
+  "description": "Páginas web y sistemas de gestión para talleres, barberías y negocios locales.",
+  "url": "https://luisvasquez234.github.io/paulino-digital/",
+  "telephone": "+19786907277",
+  "areaServed": "Lawrence, MA",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Lawrence",
+    "addressRegion": "MA",
+    "addressCountry": "US"
+  }
+}
+</script>
 <style>
   :root {
     --bg: #0A0A0A;
@@ -65,10 +84,33 @@
     text-wrap: balance;
   }
 
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    background: var(--rust);
+    color: #0A0A0A;
+    padding: 12px 20px;
+    z-index: 100;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+  }
+  .skip-link:focus {
+    left: 12px;
+    top: 12px;
+  }
+
   /* ---------- Header ---------- */
   header {
-    position: relative;
-    z-index: 5;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(10,10,10,0.92);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
   }
   .nav {
     display: flex;
@@ -546,6 +588,30 @@
   }
   .quote span.mono { font-style: normal; color: var(--rust); display: block; margin-top: 8px; font-size: 0.8rem; }
 
+  .app-shots-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+    margin-top: 12px;
+  }
+  .app-shot {
+    margin: 0;
+    background-color: var(--paper);
+    border: 1px solid var(--line-on-bg);
+    box-shadow: 0 10px 22px -14px var(--paper-shadow);
+    overflow: hidden;
+  }
+  .app-shot img { display: block; width: 100%; height: auto; }
+  .app-shot figcaption {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    padding: 12px 16px 16px;
+  }
+  @media (max-width: 880px) {
+    .app-shots-grid { grid-template-columns: 1fr; }
+  }
+
   .case-mini {
     display: flex;
     align-items: center;
@@ -737,8 +803,22 @@
     color: var(--ink);
     padding: 30px;
     box-shadow: 0 10px 22px -14px var(--paper-shadow);
+    display: flex;
+    gap: 28px;
+    align-items: center;
+    flex-wrap: wrap;
   }
   .bio-card p { margin: 0; color: var(--ink-soft); max-width: 66ch; }
+  .bio-cert-link { flex-shrink: 0; display: block; }
+  .bio-cert-img {
+    display: block;
+    width: 220px;
+    max-width: 100%;
+    border: 1px solid var(--line-on-bg);
+    box-shadow: 0 10px 22px -12px var(--paper-shadow);
+    transition: transform 0.2s ease;
+  }
+  .bio-cert-link:hover .bio-cert-img { transform: translateY(-4px); }
   .bio-badge {
     display: inline-block;
     font-family: Arial, Helvetica, sans-serif;
@@ -863,6 +943,17 @@
     color: var(--text-on-bg-soft);
     letter-spacing: 0.04em;
   }
+  .footer-link-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    letter-spacing: inherit;
+    text-decoration: underline;
+    cursor: pointer;
+  }
 
   .reveal {
     opacity: 0;
@@ -974,6 +1065,8 @@
 </style>
 
 
+<a class="skip-link" href="#main" data-i18n="skip-link">Saltar al contenido</a>
+
 <header class="wrap">
   <div class="nav">
     <div class="brand"><svg class="logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 12 12 2h7a3 3 0 0 1 3 3v7L12 22a2 2 0 0 1-2.8 0l-7.2-7.2a2 2 0 0 1 0-2.8z"/><circle cx="17" cy="7" r="1.6" fill="currentColor" stroke="none"/></svg>Paulino Digital</div>
@@ -987,7 +1080,7 @@
   </div>
 </header>
 
-<main class="wrap">
+<main class="wrap" id="main">
 
   <section class="hero" style="padding-top:8px;">
     <div>
@@ -1112,7 +1205,21 @@
       <div class="approved-stamp" id="approved-stamp" aria-hidden="true"><span data-i18n="approved-text">Aprobado</span></div>
     </div>
     <p class="compare-hint" data-i18n="compare-hint">Desliza para comparar</p>
-    <p class="quote"><span data-i18n="quote-text">"Ya no se pierden facturas ni se le olvida a nadie quién debe qué."</span><span class="mono" data-i18n="quote-source">— Sistema construido para Gil's Muffler Inc, en uso real</span></p>
+    <p class="quote"><span data-i18n="quote-text">"Ya no se pierden facturas ni se le olvida a nadie quién debe qué."</span><span class="mono" data-i18n="quote-source">— Andrés Gil, dueño de Gil's Muffler Inc</span></p>
+
+    <p class="compare-hint reveal" style="text-align:left;margin-top:36px;" data-i18n="shots-label">Así se ve el sistema por dentro</p>
+    <div class="app-shots-grid reveal">
+      <figure class="app-shot">
+        <div class="browser-frame"><span></span><span></span><span></span></div>
+        <img src="captura-dashboard.jpg" alt="Panel principal del sistema de Gil's Muffler Inc, con resumen de clientes, facturas e ingresos">
+        <figcaption data-i18n="shot1-caption">Panel principal: todo el negocio de un vistazo</figcaption>
+      </figure>
+      <figure class="app-shot">
+        <div class="browser-frame"><span></span><span></span><span></span></div>
+        <img src="captura-configuracion.jpg" alt="Pantalla de configuración del negocio, mostrando cómo se personaliza cada factura">
+        <figcaption data-i18n="shot2-caption">Configuración: tu marca en cada factura</figcaption>
+      </figure>
+    </div>
 
     <div class="case-mini reveal">
       <span class="badge2" data-i18n="case2-badge">Otro proyecto real</span>
@@ -1272,7 +1379,7 @@
       <div class="ticket quote-ticket">        <span class="ticket-no" data-i18n="quote-ticket-no">Cotización estimada</span>
         <p class="quote-total" id="quote-total">$600</p>
         <p class="quote-monthly" id="quote-monthly" data-i18n="quote-no-monthly">sin mensualidad</p>
-        <a class="btn-primary" href="#contacto" data-i18n="quote-confirm">Confirmar por WhatsApp</a>
+        <a class="btn-primary" id="quote-whatsapp-btn" href="https://wa.me/19786907277?text=Hola%2C%20quiero%20cotizar%20mi%20sistema%20con%3A%20P%C3%A1gina%20web.%20Total%20estimado%3A%20%24600" target="_blank" rel="noopener" data-i18n="quote-confirm">Confirmar por WhatsApp</a>
       </div>
     </div>
   </section>
@@ -1285,8 +1392,11 @@
     <div class="bio-card reveal">
       <div>
         <p data-i18n="bio-p">Soy de Lawrence, MA. Empecé construyendo el sistema de Gil's Muffler Inc y también la página de una empresa de paneles solares. Me formé en Academia Catalizadora para hacer este trabajo bien, de principio a fin.</p>
-        <span class="bio-badge" data-i18n="bio-badge">Certificado — Academia Catalizadora</span>
+        <a class="bio-badge" href="certificado.pdf" target="_blank" rel="noopener" data-i18n="bio-badge">Certificado — Academia Catalizadora</a>
       </div>
+      <a class="bio-cert-link" href="certificado.pdf" target="_blank" rel="noopener" aria-label="Ver certificado completo en PDF">
+        <img class="bio-cert-img" src="certificado.jpg" alt="Certificado de título AI Architect, Academia Catalizadora, a nombre de Luis Miguel Vásquez">
+      </a>
     </div>
   </section>
 
@@ -1348,7 +1458,7 @@
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20l1.4-4.2A8 8 0 1 1 9 18.6z"/><path d="M8.5 10.5c0 3 2.5 5.5 5.5 5.5"/></svg>
 </a>
 
-<footer>Paulino Digital · Lawrence, MA</footer>
+<footer>Paulino Digital · Lawrence, MA · <a href="tarjeta.html">Tarjeta de presentación</a> · <button type="button" id="share-btn" class="footer-link-btn" data-i18n="share-btn">Compartir esta página</button></footer>
 
 <script>
   if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -1441,20 +1551,33 @@
 
   var quoteTotalEl = document.getElementById('quote-total');
   var quoteMonthlyEl = document.getElementById('quote-monthly');
+  var quoteWhatsappBtn = document.getElementById('quote-whatsapp-btn');
   function updateQuote() {
     var total = 600;
     var monthly = 0;
-    document.querySelectorAll('.quote-check:checked').forEach(function (cb) {
+    var picked = [I18N['quote-opt0'][currentLang]];
+    document.querySelectorAll('.quote-check').forEach(function (cb) {
       var price = Number(cb.dataset.price) || 0;
+      if (!cb.checked) return;
       if (cb.dataset.monthly) monthly += price; else total += price;
+      var key = cb.nextElementSibling && cb.nextElementSibling.getAttribute('data-i18n');
+      if (key && I18N[key]) picked.push(I18N[key][currentLang]);
     });
     quoteTotalEl.textContent = '$' + total.toLocaleString('en-US');
+    var totalForMessage = '$' + total.toLocaleString('en-US');
     if (monthly > 0) {
       var pre = I18N['quote-monthly-prefix'][currentLang];
       var suf = I18N['quote-monthly-suffix'][currentLang];
       quoteMonthlyEl.textContent = pre + monthly + suf;
+      totalForMessage += ' + ' + pre + monthly + suf;
     } else {
       quoteMonthlyEl.textContent = I18N['quote-no-monthly'][currentLang];
+    }
+    if (quoteWhatsappBtn) {
+      var intro = currentLang === 'en' ? "Hi, I'd like a quote for my system with: " : 'Hola, quiero cotizar mi sistema con: ';
+      var totalLabel = currentLang === 'en' ? '. Estimated total: ' : '. Total estimado: ';
+      var message = intro + picked.join(', ') + totalLabel + totalForMessage;
+      quoteWhatsappBtn.href = 'https://wa.me/19786907277?text=' + encodeURIComponent(message);
     }
   }
   document.querySelectorAll('.quote-check').forEach(function (cb) {
@@ -1480,6 +1603,7 @@
 
   var I18N = {
     'nav-cta': { es: 'Hablemos', en: "Let's talk" },
+    'skip-link': { es: 'Saltar al contenido', en: 'Skip to content' },
     'hero-eyebrow': { es: 'Lawrence, MA · sistemas a la medida', en: 'Lawrence, MA · systems built for you' },
     'hero-h1': { es: 'Tu negocio,<br>organizado de verdad', en: 'Your business,<br>truly organized', plain: { es: 'Tu negocio, organizado de verdad', en: 'Your business, truly organized' } },
     'hero-lede': { es: 'Páginas web y sistemas de gestión para talleres, barberías y negocios locales. Se acabaron las facturas perdidas y las citas en un cuaderno.', en: 'Websites and management systems for auto shops, barbershops and local businesses. No more lost invoices or appointments scribbled in a notebook.' },
@@ -1526,9 +1650,12 @@
     'caso-b4': { es: 'Todo en cuadernos y post-its.', en: 'Everything in notebooks and post-its.' },
     'compare-hint': { es: 'Desliza para comparar', en: 'Drag to compare' },
     'quote-text': { es: '"Ya no se pierden facturas ni se le olvida a nadie quién debe qué."', en: '"No more lost invoices, and nobody forgets who owes what."' },
-    'quote-source': { es: "— Sistema construido para Gil's Muffler Inc, en uso real", en: "— System built for Gil's Muffler Inc, in real use" },
+    'quote-source': { es: "— Andrés Gil, dueño de Gil's Muffler Inc", en: "— Andrés Gil, owner of Gil's Muffler Inc" },
     'case2-badge': { es: 'Otro proyecto real', en: 'Another real project' },
     'case2-text': { es: 'También construí la página web de una empresa de instalación de paneles solares.', en: 'I also built the website for a solar panel installation company.' },
+    'shots-label': { es: 'Así se ve el sistema por dentro', en: "Here's what the system looks like inside" },
+    'shot1-caption': { es: 'Panel principal: todo el negocio de un vistazo', en: 'Main dashboard: your whole business at a glance' },
+    'shot2-caption': { es: 'Configuración: tu marca en cada factura', en: 'Settings: your brand on every invoice' },
     'func-eyebrow': { es: 'Todo incluido', en: 'All included' },
     'func-h2': { es: 'Funciones que trae tu sistema', en: 'What your system includes' },
     'func1-h': { es: 'Aviso de mantenimiento', en: 'Maintenance reminders' },
@@ -1623,6 +1750,8 @@
     'quote-monthly-prefix': { es: '+ $', en: '+ $' },
     'quote-monthly-suffix': { es: '/mes', en: '/mo' },
     'quote-confirm': { es: 'Confirmar por WhatsApp', en: 'Confirm on WhatsApp' },
+    'share-btn': { es: 'Compartir esta página', en: 'Share this page' },
+    'share-copied': { es: '¡Link copiado!', en: 'Link copied!' },
     'custom-lead': { es: '¿Tu negocio no está en la lista?', en: 'Don’t see your business type?' },
     'custom-placeholder': { es: 'Escribe tu tipo de negocio, ej. lavandería', en: 'Type your business type, e.g. laundromat' },
     'custom-btn': { es: 'Generar ejemplo', en: 'Generate example' },
@@ -1676,6 +1805,21 @@
       var fallback = currentLang === 'en' ? 'your business' : 'tu negocio';
       customTitle.textContent = prefix + (val || fallback);
       customResult.hidden = false;
+    });
+  }
+
+  var shareBtn = document.getElementById('share-btn');
+  if (shareBtn) {
+    shareBtn.addEventListener('click', function () {
+      var shareData = { title: 'Paulino Digital', url: location.href };
+      if (navigator.share) {
+        navigator.share(shareData).catch(function () {});
+      } else if (navigator.clipboard) {
+        navigator.clipboard.writeText(location.href).then(function () {
+          shareBtn.textContent = I18N['share-copied'][currentLang];
+          setTimeout(function () { shareBtn.textContent = I18N['share-btn'][currentLang]; }, 2000);
+        });
+      }
     });
   }
 </script>
