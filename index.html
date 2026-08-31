@@ -20,6 +20,7 @@
 </script>
 <style>
   :root {
+    --font-display: -apple-system, "system-ui", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
     --bg: #0A0A0A;
     --paper: #151513;
     --paper-shadow: rgba(0,0,0,0.55);
@@ -36,6 +37,21 @@
     --text-on-bg: var(--ink);
     --text-on-bg-soft: var(--ink-soft);
     --line-on-bg: rgba(212,175,55,0.28);
+    --header-bg: rgba(10,10,10,0.92);
+  }
+
+  :root[data-theme="light"] {
+    --bg: #F5F1E6;
+    --paper: #FFFFFF;
+    --paper-shadow: rgba(60,50,20,0.15);
+    --ink: #221D14;
+    --ink-soft: #6B6250;
+    --rust: #96751B;
+    --navy: #7A5F16;
+    --green: #2F7A50;
+    --line-on-bg: rgba(150,117,27,0.35);
+    --perf: rgba(150,117,27,0.28);
+    --header-bg: rgba(245,241,230,0.92);
   }
 
   * { box-sizing: border-box; }
@@ -76,13 +92,14 @@
   }
 
   .stamp {
-    font-family: Georgia, serif;
-    font-weight: 400;
-    letter-spacing: 0.01em;
+    font-family: var(--font-display);
+    font-weight: 800;
+    letter-spacing: -0.01em;
     position: relative;
     display: inline-block;
     text-wrap: balance;
   }
+  .stamp .hl { color: var(--rust); }
 
   .skip-link {
     position: absolute;
@@ -108,7 +125,7 @@
     position: sticky;
     top: 0;
     z-index: 50;
-    background: rgba(10,10,10,0.92);
+    background: var(--header-bg);
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
   }
@@ -140,6 +157,22 @@
   .brand:hover .logo { transform: rotate(6deg) scale(1.08); }
   .nav-right { display: flex; align-items: center; gap: 14px; }
   .lang-group { display: flex; }
+  .theme-toggle {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--line-on-bg);
+    border-radius: 50%;
+    background: transparent;
+    color: var(--text-on-bg);
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: border-color 0.15s ease, color 0.15s ease;
+  }
+  .theme-toggle:hover { border-color: var(--rust); color: var(--rust); }
+  .theme-toggle svg { width: 18px; height: 18px; }
   .lang-btn {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 0.72rem;
@@ -183,6 +216,46 @@
     gap: 48px;
     align-items: center;
     position: relative;
+  }
+  #bg-particles {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    display: block;
+  }
+  .hero > div {
+    position: relative;
+    z-index: 1;
+  }
+  .eyebrow-dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--rust);
+    margin-right: 8px;
+  }
+  .industry-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .industry-card {
+    background-color: var(--paper);
+    border: 1px solid var(--line-on-bg);
+    box-shadow: 0 8px 18px -14px var(--paper-shadow);
+    padding: 22px 14px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.85rem;
+    color: var(--ink);
+  }
+  .industry-icon { display: block; font-size: 1.8rem; margin-bottom: 10px; }
+  @media (max-width: 880px) {
+    .industry-grid { grid-template-columns: repeat(2, 1fr); }
   }
   .hero h1 {
     font-size: clamp(2.4rem, 5vw, 3.6rem);
@@ -319,6 +392,9 @@
   section { padding: 74px 0; position: relative; }
   .section-head { max-width: 62ch; margin: 0 0 40px; }
   .section-head h2 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    letter-spacing: -0.01em;
     font-size: clamp(1.7rem, 3.2vw, 2.3rem);
     margin: 10px 0 0;
     text-wrap: balance;
@@ -654,6 +730,17 @@
     margin: 0 0 8px;
   }
   .feature p { margin: 0; color: var(--ink-soft); font-size: 0.85rem; }
+  .icon-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    background: rgba(212,175,55,0.12);
+    font-size: 1.25rem;
+    margin-bottom: 12px;
+  }
 
   /* ---------- cotizador ---------- */
   .quote-box {
@@ -892,6 +979,38 @@
     box-shadow: 0 18px 40px -18px var(--paper-shadow);
     position: relative;
   }
+  @media (min-width: 881px) {
+    .cta-ticket.with-form { grid-template-columns: 1fr 1fr; align-items: start; }
+    .cta-ticket.with-form::before { left: 50%; }
+  }
+  .contact-form-card {
+    background-color: var(--bg);
+    border: 1px solid var(--line-on-bg);
+    box-shadow: 0 10px 22px -14px var(--paper-shadow);
+    padding: 26px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    text-align: left;
+  }
+  .contact-form-card label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.8rem;
+    color: var(--ink-soft);
+  }
+  .contact-form-card input,
+  .contact-form-card select {
+    font-family: Georgia, serif;
+    font-size: 0.95rem;
+    padding: 10px 12px;
+    border: 2px solid var(--line-on-bg);
+    background: transparent;
+    color: var(--ink);
+  }
+  .contact-form-card select { cursor: pointer; }
   .cta-ticket::before {
     content: "";
     position: absolute;
@@ -901,7 +1020,9 @@
     border-left: 2px dashed var(--perf);
   }
   .cta-ticket h2 {
-    font-family: Georgia, serif;
+    font-family: var(--font-display);
+    font-weight: 800;
+    letter-spacing: -0.01em;
     font-size: clamp(1.5rem, 3vw, 2rem);
     margin: 8px 0 12px;
   }
@@ -1049,7 +1170,7 @@
       --line-on-bg: rgba(28,36,48,0.35);
     }
     body { background: #fff; }
-    .doodle, .floating-whatsapp, .lang-group, .ticket-tabs,
+    .doodle, .floating-whatsapp, .lang-group, .theme-toggle, .ticket-tabs,
     .see-demo, .compare-range, .handle, .compare-hint, .before-clip,
     .custom-row, .quote-options { display: none !important; }
     * { box-shadow: none !important; filter: none !important; }
@@ -1075,6 +1196,7 @@
         <button type="button" class="lang-btn active" data-lang="es">ES</button>
         <button type="button" class="lang-btn" data-lang="en">EN</button>
       </div>
+      <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Cambiar tema claro u oscuro"></button>
       <a class="nav-cta" href="#contacto" data-i18n="nav-cta">Hablemos</a>
     </div>
   </div>
@@ -1083,9 +1205,10 @@
 <main class="wrap" id="main">
 
   <section class="hero" style="padding-top:8px;">
+    <canvas id="bg-particles" aria-hidden="true"></canvas>
     <div>
-      <p class="eyebrow"><span data-i18n="hero-eyebrow">Lawrence, MA · sistemas a la medida</span></p>
-      <h1 class="stamp" id="hero-h1" data-text="Tu negocio, organizado de verdad" data-i18n-html="hero-h1">Tu negocio,<br>organizado de verdad</h1>
+      <p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span><span data-i18n="hero-eyebrow">Lawrence, MA · sistemas a la medida</span></p>
+      <h1 class="stamp" id="hero-h1" data-text="Tu negocio, organizado de verdad" data-i18n-html="hero-h1">Tu negocio,<br>organizado <span class="hl">de verdad</span></h1>
       <p class="lede" data-i18n="hero-lede">Páginas web y sistemas de gestión para talleres, barberías y negocios locales. Se acabaron las facturas perdidas y las citas en un cuaderno.</p>
       <div class="hero-ctas">
         <a class="btn-primary" href="#contacto" data-i18n="btn-quote">Pide tu cotización</a>
@@ -1150,6 +1273,24 @@
         <div class="demo-row"><span data-i18n="custom-r3">Pagos</span><span data-i18n="custom-r3v">Facturas siempre a la mano</span></div>
         <div class="demo-row"><span data-i18n="custom-r4">Estado</span><span class="chip" data-i18n="custom-r4v">Listo para ti</span></div>
       </div>
+    </div>
+  </section>
+
+  <section id="industrias">
+    <div class="section-head">
+      <p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span><span data-i18n="ind-eyebrow">Para quién trabajo</span></p>
+      <h2 data-i18n="ind-h2">Tipos de negocio que puedo digitalizar</h2>
+      <p class="lede" style="margin-top:14px;" data-i18n="ind-lede">Ya construí sistemas reales para un taller mecánico y una empresa de paneles solares — y estoy listo para ayudar a estos otros tipos de negocio también.</p>
+    </div>
+    <div class="industry-grid">
+      <div class="industry-card reveal"><span class="industry-icon" aria-hidden="true">🔧</span><span data-i18n="ind1">Talleres mecánicos</span></div>
+      <div class="industry-card reveal"><span class="industry-icon" aria-hidden="true">💈</span><span data-i18n="ind2">Barberías y salones</span></div>
+      <div class="industry-card reveal"><span class="industry-icon" aria-hidden="true">🏬</span><span data-i18n="ind3">Negocios locales</span></div>
+      <div class="industry-card reveal"><span class="industry-icon" aria-hidden="true">🛒</span><span data-i18n="ind4">Ecommerce</span></div>
+      <div class="industry-card reveal"><span class="industry-icon" aria-hidden="true">🏥</span><span data-i18n="ind5">Salud</span></div>
+      <div class="industry-card reveal"><span class="industry-icon" aria-hidden="true">💼</span><span data-i18n="ind6">Servicios profesionales</span></div>
+      <div class="industry-card reveal"><span class="industry-icon" aria-hidden="true">🍽️</span><span data-i18n="ind7">Gastronomía</span></div>
+      <div class="industry-card reveal"><span class="industry-icon" aria-hidden="true">🏠</span><span data-i18n="ind8">Inmobiliario</span></div>
     </div>
   </section>
 
@@ -1234,36 +1375,90 @@
     </div>
     <div class="features-grid">
       <div class="feature reveal">
+        <span class="icon-badge" aria-hidden="true">🔔</span>
         <h3 data-i18n="func1-h">Aviso de mantenimiento</h3>
         <p data-i18n="func1-p">Le avisas a tus clientes cuándo les toca su próximo servicio, automáticamente.</p>
       </div>
       <div class="feature reveal">
+        <span class="icon-badge" aria-hidden="true">👥</span>
         <h3 data-i18n="func2-h">Varios usuarios</h3>
         <p data-i18n="func2-p">Tus empleados pueden tener su propio acceso, no solo tú.</p>
       </div>
       <div class="feature reveal">
+        <span class="icon-badge" aria-hidden="true">📋</span>
         <h3 data-i18n="func3-h">Historial por cliente</h3>
         <p data-i18n="func3-p">Ve todo lo que un cliente ha pedido y cuánto ha gastado.</p>
       </div>
       <div class="feature reveal">
+        <span class="icon-badge" aria-hidden="true">🧾</span>
         <h3 data-i18n="func4-h">Facturas por WhatsApp</h3>
         <p data-i18n="func4-p">Envía facturas directo por WhatsApp o correo, sin imprimir nada.</p>
       </div>
       <div class="feature reveal">
+        <span class="icon-badge" aria-hidden="true">☁️</span>
         <h3 data-i18n="func5-h">Respaldo automático</h3>
         <p data-i18n="func5-p">Tu información se guarda sola, todos los días.</p>
       </div>
       <div class="feature reveal">
+        <span class="icon-badge" aria-hidden="true">📅</span>
         <h3 data-i18n="func6-h">Calendario visual</h3>
         <p data-i18n="func6-p">Ve todas las citas del día de un vistazo.</p>
       </div>
       <div class="feature reveal">
+        <span class="icon-badge" aria-hidden="true">📊</span>
         <h3 data-i18n="func7-h">Reportes en PDF/Excel</h3>
         <p data-i18n="func7-p">Exporta tus reportes para tu contador en un clic.</p>
       </div>
       <div class="feature reveal">
+        <span class="icon-badge" aria-hidden="true">📶</span>
         <h3 data-i18n="func8-h">Funciona sin internet</h3>
         <p data-i18n="func8-p">Puedes seguir trabajando aunque se caiga la conexión un momento.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="ia">
+    <div class="section-head">
+      <p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span><span data-i18n="ia-eyebrow">Inteligencia artificial</span></p>
+      <h2 data-i18n="ia-h2">Un equipo de agentes de IA, trabajando 24/7</h2>
+      <p class="lede" style="margin-top:14px;" data-i18n="ia-lede">Cada agente tiene un rol específico — se integran entre sí para que tú solo hables con el cliente que ya está listo para avanzar.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature reveal">
+        <span class="icon-badge" aria-hidden="true">💬</span>
+        <h3 data-i18n="ia1-h">Agente de Ventas</h3>
+        <p data-i18n="ia1-p">Responde y agenda apenas te escribe un cliente nuevo por WhatsApp.</p>
+        <p class="mono" style="color:var(--green); font-size:0.72rem; margin-top:10px;" data-i18n="ia1-kpi">KPI: % agendado sin que tú contestes</p>
+      </div>
+      <div class="feature reveal">
+        <span class="icon-badge" aria-hidden="true">🎧</span>
+        <h3 data-i18n="ia2-h">Agente de Atención</h3>
+        <p data-i18n="ia2-p">Responde las preguntas más comunes de tus clientes activos, al instante.</p>
+        <p class="mono" style="color:var(--green); font-size:0.72rem; margin-top:10px;" data-i18n="ia2-kpi">KPI: tiempo de primera respuesta</p>
+      </div>
+      <div class="feature reveal">
+        <span class="icon-badge" aria-hidden="true">🛠️</span>
+        <h3 data-i18n="ia3-h">Agente de Soporte</h3>
+        <p data-i18n="ia3-p">Resuelve dudas simples de tus clientes sin que tengas que intervenir.</p>
+        <p class="mono" style="color:var(--green); font-size:0.72rem; margin-top:10px;" data-i18n="ia3-kpi">KPI: % resuelto sin tu ayuda</p>
+      </div>
+      <div class="feature reveal">
+        <span class="icon-badge" aria-hidden="true">📣</span>
+        <h3 data-i18n="ia4-h">Agente de Marketing</h3>
+        <p data-i18n="ia4-p">Te ayuda a generar ideas y textos para promocionar tu negocio.</p>
+        <p class="mono" style="color:var(--green); font-size:0.72rem; margin-top:10px;" data-i18n="ia4-kpi">KPI: piezas generadas por semana</p>
+      </div>
+      <div class="feature reveal">
+        <span class="icon-badge" aria-hidden="true">🤝</span>
+        <h3 data-i18n="ia5-h">Agente Comercial</h3>
+        <p data-i18n="ia5-p">Prioriza tus mensajes para que sepas a quién responder primero.</p>
+        <p class="mono" style="color:var(--green); font-size:0.72rem; margin-top:10px;" data-i18n="ia5-kpi">KPI: tiempo de mensaje a respuesta</p>
+      </div>
+      <div class="feature reveal">
+        <span class="icon-badge" aria-hidden="true">📲</span>
+        <h3 data-i18n="ia6-h">Agente para WhatsApp</h3>
+        <p data-i18n="ia6-p">Lleva la conversación completa con tu cliente, desde la pregunta hasta la cita agendada.</p>
+        <p class="mono" style="color:var(--green); font-size:0.72rem; margin-top:10px;" data-i18n="ia6-kpi">KPI: % resuelto sin que intervengas</p>
       </div>
     </div>
   </section>
@@ -1437,17 +1632,42 @@
     </div>
   </section>
 
-  <section id="contacto" class="contacto">    <div class="cta-ticket reveal">
+  <section id="contacto" class="contacto">    <div class="cta-ticket with-form reveal">
       <div>
-        <p class="eyebrow"><span data-i18n="contacto-eyebrow">Arranca tu proyecto</span></p>
-        <h2 data-i18n="contacto-h2">¿Listo para digitalizar tu negocio?</h2>
-        <p data-i18n="contacto-p">Escríbeme y en menos de 24 horas te respondo con los siguientes pasos.</p>
+        <p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span><span data-i18n="contacto-eyebrow">Contacto</span></p>
+        <h2 data-i18n="contacto-h2">Empecemos con un diagnóstico, no con una propuesta genérica</h2>
+        <p data-i18n="contacto-p">Cuéntame sobre tu negocio y te respondo con un plan concreto — no un genérico "hablemos".</p>
+        <div class="cta-side" style="text-align:left; margin-top:22px;">
+          <a class="btn-primary" href="https://wa.me/19786907277?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20un%20sistema%20para%20mi%20negocio" target="_blank" rel="noopener" style="width:100%; display:block; text-align:center;" data-i18n="contacto-whatsapp">Escríbeme por WhatsApp</a>
+          <a class="btn-ghost" href="tel:+19786907277" style="width:100%; display:block; text-align:center; margin-top:10px;" data-i18n="btn-call">Llamar</a>
+          <p class="print-only mono" style="margin-top:10px;">(978) 690-7277</p>
+        </div>
+        <p style="margin-top:18px; font-size:0.8rem; color:var(--ink-soft);" data-i18n="contacto-reassure">Te respondo en menos de 24 horas. Tus datos nunca se comparten con terceros.</p>
       </div>
-      <div class="cta-side">
-        <span class="ticket-no" data-i18n="contacto-cut">Corte aquí ✂</span>
-        <a class="btn-primary" href="https://wa.me/19786907277?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20un%20sistema%20para%20mi%20negocio" target="_blank" rel="noopener" style="width:100%;" data-i18n="contacto-whatsapp">Escríbeme por WhatsApp</a>
-        <a class="btn-ghost" href="tel:+19786907277" style="width:100%;" data-i18n="btn-call">Llamar</a>
-        <p class="print-only mono" style="margin-top:10px;">(978) 690-7277</p>
+      <div class="contact-form-card">
+        <label for="cf-name" data-i18n="cf-name-label">Nombre
+          <input type="text" id="cf-name" autocomplete="name">
+        </label>
+        <label for="cf-business" data-i18n="cf-business-label">Tipo de negocio
+          <input type="text" id="cf-business" placeholder="Ej. taller, barbería..." data-i18n-placeholder="cf-business-placeholder">
+        </label>
+        <label for="cf-need" data-i18n="cf-need-label">¿Qué necesitas?
+          <select id="cf-need">
+            <option value="" data-i18n="cf-need-opt0">Todavía no estoy seguro</option>
+            <option value="Página web" data-i18n="cf-need-opt1">Página web</option>
+            <option value="Agenda de citas" data-i18n="cf-need-opt2">Agenda de citas</option>
+            <option value="Facturación e inventario" data-i18n="cf-need-opt3">Facturación e inventario</option>
+          </select>
+        </label>
+        <label for="cf-level" data-i18n="cf-level-label">Nivel que te interesa
+          <select id="cf-level">
+            <option value="No estoy seguro" data-i18n="cf-level-opt0">No estoy seguro</option>
+            <option value="Nivel 1 - Página web" data-i18n="cf-level-opt1">Nivel 1 · Página web</option>
+            <option value="Nivel 2 - Página + citas" data-i18n="cf-level-opt2">Nivel 2 · Página + citas</option>
+            <option value="Nivel 3 - Sistema completo" data-i18n="cf-level-opt3">Nivel 3 · Sistema completo</option>
+          </select>
+        </label>
+        <button type="button" class="btn-primary" id="cf-submit" style="width:100%;" data-i18n="cf-submit">Enviar por WhatsApp</button>
       </div>
     </div>
   </section>
@@ -1461,6 +1681,88 @@
 <footer>Paulino Digital · Lawrence, MA · <a href="tarjeta.html">Tarjeta de presentación</a> · <button type="button" id="share-btn" class="footer-link-btn" data-i18n="share-btn">Compartir esta página</button></footer>
 
 <script>
+  (function () {
+    var root = document.documentElement;
+    var toggleBtn = document.getElementById('theme-toggle');
+    if (!toggleBtn) return;
+    var SUN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8 6 18M18 6l1.8-1.8"/></svg>';
+    var MOON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg>';
+    function apply(theme) {
+      if (theme === 'light') {
+        root.setAttribute('data-theme', 'light');
+        toggleBtn.innerHTML = MOON;
+      } else {
+        root.removeAttribute('data-theme');
+        toggleBtn.innerHTML = SUN;
+      }
+    }
+    var saved = null;
+    try { saved = localStorage.getItem('pd-theme'); } catch (e) {}
+    apply(saved === 'light' ? 'light' : 'dark');
+    toggleBtn.addEventListener('click', function () {
+      var next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      apply(next);
+      try { localStorage.setItem('pd-theme', next); } catch (e) {}
+    });
+  })();
+
+  (function () {
+    var canvas = document.getElementById('bg-particles');
+    if (!canvas || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var ctx = canvas.getContext('2d');
+    var hero = canvas.parentElement;
+    var particles = [];
+    var COUNT = 36;
+    function resize() {
+      canvas.width = hero.offsetWidth;
+      canvas.height = hero.offsetHeight;
+    }
+    function makeParticles() {
+      particles = [];
+      for (var i = 0; i < COUNT; i++) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          vx: (Math.random() - 0.5) * 0.25,
+          vy: (Math.random() - 0.5) * 0.25
+        });
+      }
+    }
+    function step() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (var i = 0; i < particles.length; i++) {
+        var p = particles[i];
+        p.x += p.vx; p.y += p.vy;
+        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+      }
+      for (var i = 0; i < particles.length; i++) {
+        for (var j = i + 1; j < particles.length; j++) {
+          var dx = particles[i].x - particles[j].x;
+          var dy = particles[i].y - particles[j].y;
+          var dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 130) {
+            ctx.strokeStyle = 'rgba(212,175,55,' + (0.14 * (1 - dist / 130)) + ')';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.stroke();
+          }
+        }
+        ctx.fillStyle = 'rgba(242,222,154,0.6)';
+        ctx.beginPath();
+        ctx.arc(particles[i].x, particles[i].y, 1.6, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      requestAnimationFrame(step);
+    }
+    resize();
+    makeParticles();
+    window.addEventListener('resize', function () { resize(); makeParticles(); });
+    requestAnimationFrame(step);
+  })();
+
   if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     var els = document.querySelectorAll('.reveal');
     var io = new IntersectionObserver(function(entries) {
@@ -1605,7 +1907,7 @@
     'nav-cta': { es: 'Hablemos', en: "Let's talk" },
     'skip-link': { es: 'Saltar al contenido', en: 'Skip to content' },
     'hero-eyebrow': { es: 'Lawrence, MA · sistemas a la medida', en: 'Lawrence, MA · systems built for you' },
-    'hero-h1': { es: 'Tu negocio,<br>organizado de verdad', en: 'Your business,<br>truly organized', plain: { es: 'Tu negocio, organizado de verdad', en: 'Your business, truly organized' } },
+    'hero-h1': { es: 'Tu negocio,<br>organizado <span class="hl">de verdad</span>', en: 'Your business,<br><span class="hl">truly organized</span>', plain: { es: 'Tu negocio, organizado de verdad', en: 'Your business, truly organized' } },
     'hero-lede': { es: 'Páginas web y sistemas de gestión para talleres, barberías y negocios locales. Se acabaron las facturas perdidas y las citas en un cuaderno.', en: 'Websites and management systems for auto shops, barbershops and local businesses. No more lost invoices or appointments scribbled in a notebook.' },
     'btn-quote': { es: 'Pide tu cotización', en: 'Get your quote' },
     'btn-plans': { es: 'Ver planes', en: 'See plans' },
@@ -1731,10 +2033,24 @@
     'faq6-a': { es: 'Un depósito del 40% para comenzar y el resto al entregar el proyecto. Acepto Zelle, efectivo o transferencia.', en: 'A 40% deposit to get started and the rest when the project is delivered. I accept Zelle, cash or bank transfer.' },
     'faq7-q': { es: '¿Mis datos y los de mis clientes están seguros?', en: 'Is my data and my customers’ data safe?' },
     'faq7-a': { es: 'Sí. Se guardan en una base de datos privada de tu negocio, no en hojas sueltas ni en un Excel compartido.', en: 'Yes. It’s stored in a private database for your business, not in loose papers or a shared spreadsheet.' },
-    'contacto-eyebrow': { es: 'Arranca tu proyecto', en: 'Start your project' },
-    'contacto-h2': { es: '¿Listo para digitalizar tu negocio?', en: 'Ready to digitize your business?' },
-    'contacto-p': { es: 'Escríbeme y en menos de 24 horas te respondo con los siguientes pasos.', en: 'Message me and I’ll reply within 24 hours with next steps.' },
-    'contacto-cut': { es: 'Corte aquí ✂', en: 'Cut here ✂' },
+    'contacto-eyebrow': { es: 'Contacto', en: 'Contact' },
+    'contacto-h2': { es: 'Empecemos con un diagnóstico, no con una propuesta genérica', en: "Let's start with a diagnosis, not a generic pitch" },
+    'contacto-p': { es: 'Cuéntame sobre tu negocio y te respondo con un plan concreto — no un genérico "hablemos".', en: 'Tell me about your business and I\'ll reply with a concrete plan — not a generic "let\'s talk".' },
+    'contacto-reassure': { es: 'Te respondo en menos de 24 horas. Tus datos nunca se comparten con terceros.', en: 'I reply within 24 hours. Your info is never shared with third parties.' },
+    'cf-name-label': { es: 'Nombre', en: 'Name' },
+    'cf-business-label': { es: 'Tipo de negocio', en: 'Type of business' },
+    'cf-business-placeholder': { es: 'Ej. taller, barbería...', en: 'E.g. auto shop, barbershop...' },
+    'cf-need-label': { es: '¿Qué necesitas?', en: 'What do you need?' },
+    'cf-need-opt0': { es: 'Todavía no estoy seguro', en: "I'm not sure yet" },
+    'cf-need-opt1': { es: 'Página web', en: 'Website' },
+    'cf-need-opt2': { es: 'Agenda de citas', en: 'Appointment booking' },
+    'cf-need-opt3': { es: 'Facturación e inventario', en: 'Invoicing and inventory' },
+    'cf-level-label': { es: 'Nivel que te interesa', en: 'Level you\'re interested in' },
+    'cf-level-opt0': { es: 'No estoy seguro', en: 'Not sure' },
+    'cf-level-opt1': { es: 'Nivel 1 · Página web', en: 'Level 1 · Website' },
+    'cf-level-opt2': { es: 'Nivel 2 · Página + citas', en: 'Level 2 · Website + booking' },
+    'cf-level-opt3': { es: 'Nivel 3 · Sistema completo', en: 'Level 3 · Full system' },
+    'cf-submit': { es: 'Enviar por WhatsApp', en: 'Send via WhatsApp' },
     'contacto-whatsapp': { es: 'Escríbeme por WhatsApp', en: 'Message me on WhatsApp' },
     'approved-text': { es: 'Aprobado', en: 'Approved' },
     'quote-eyebrow': { es: 'Cotizador rápido', en: 'Quick quote builder' },
@@ -1763,7 +2079,39 @@
     'custom-r3': { es: 'Pagos', en: 'Payments' },
     'custom-r3v': { es: 'Facturas siempre a la mano', en: 'Invoices always on hand' },
     'custom-r4': { es: 'Estado', en: 'Status' },
-    'custom-r4v': { es: 'Listo para ti', en: 'Ready for you' }
+    'custom-r4v': { es: 'Listo para ti', en: 'Ready for you' },
+    'ind-eyebrow': { es: 'Para quién trabajo', en: 'Who I work with' },
+    'ind-h2': { es: 'Tipos de negocio que puedo digitalizar', en: 'Types of business I can digitize' },
+    'ind-lede': { es: 'Ya construí sistemas reales para un taller mecánico y una empresa de paneles solares — y estoy listo para ayudar a estos otros tipos de negocio también.', en: 'I already built real systems for an auto shop and a solar panel company — and I\'m ready to help these other types of business too.' },
+    'ind1': { es: 'Talleres mecánicos', en: 'Auto repair shops' },
+    'ind2': { es: 'Barberías y salones', en: 'Barbershops & salons' },
+    'ind3': { es: 'Negocios locales', en: 'Local businesses' },
+    'ind4': { es: 'Ecommerce', en: 'Ecommerce' },
+    'ind5': { es: 'Salud', en: 'Healthcare' },
+    'ind6': { es: 'Servicios profesionales', en: 'Professional services' },
+    'ind7': { es: 'Gastronomía', en: 'Restaurants' },
+    'ind8': { es: 'Inmobiliario', en: 'Real estate' },
+    'ia-eyebrow': { es: 'Inteligencia artificial', en: 'Artificial intelligence' },
+    'ia-h2': { es: 'Un equipo de agentes de IA, trabajando 24/7', en: 'A team of AI agents, working 24/7' },
+    'ia-lede': { es: 'Cada agente tiene un rol específico — se integran entre sí para que tú solo hables con el cliente que ya está listo para avanzar.', en: 'Each agent has a specific role — they work together so you only talk to the customer who is already ready to move forward.' },
+    'ia1-h': { es: 'Agente de Ventas', en: 'Sales Agent' },
+    'ia1-p': { es: 'Responde y agenda apenas te escribe un cliente nuevo por WhatsApp.', en: 'Replies and books an appointment as soon as a new customer messages you on WhatsApp.' },
+    'ia1-kpi': { es: 'KPI: % agendado sin que tú contestes', en: 'KPI: % booked without you replying' },
+    'ia2-h': { es: 'Agente de Atención', en: 'Support Agent' },
+    'ia2-p': { es: 'Responde las preguntas más comunes de tus clientes activos, al instante.', en: 'Answers your active customers\' most common questions, instantly.' },
+    'ia2-kpi': { es: 'KPI: tiempo de primera respuesta', en: 'KPI: first response time' },
+    'ia3-h': { es: 'Agente de Soporte', en: 'Help Agent' },
+    'ia3-p': { es: 'Resuelve dudas simples de tus clientes sin que tengas que intervenir.', en: 'Resolves simple customer questions without you having to step in.' },
+    'ia3-kpi': { es: 'KPI: % resuelto sin tu ayuda', en: 'KPI: % resolved without your help' },
+    'ia4-h': { es: 'Agente de Marketing', en: 'Marketing Agent' },
+    'ia4-p': { es: 'Te ayuda a generar ideas y textos para promocionar tu negocio.', en: 'Helps you generate ideas and copy to promote your business.' },
+    'ia4-kpi': { es: 'KPI: piezas generadas por semana', en: 'KPI: pieces generated per week' },
+    'ia5-h': { es: 'Agente Comercial', en: 'Deal Agent' },
+    'ia5-p': { es: 'Prioriza tus mensajes para que sepas a quién responder primero.', en: 'Prioritizes your messages so you know who to reply to first.' },
+    'ia5-kpi': { es: 'KPI: tiempo de mensaje a respuesta', en: 'KPI: message-to-reply time' },
+    'ia6-h': { es: 'Agente para WhatsApp', en: 'WhatsApp Agent' },
+    'ia6-p': { es: 'Lleva la conversación completa con tu cliente, desde la pregunta hasta la cita agendada.', en: 'Handles the full conversation with your customer, from the first question to the booked appointment.' },
+    'ia6-kpi': { es: 'KPI: % resuelto sin que intervengas', en: 'KPI: % resolved without you stepping in' }
   };
 
   function applyLang(lang) {
@@ -1820,6 +2168,25 @@
           setTimeout(function () { shareBtn.textContent = I18N['share-btn'][currentLang]; }, 2000);
         });
       }
+    });
+  }
+
+  var cfSubmit = document.getElementById('cf-submit');
+  if (cfSubmit) {
+    cfSubmit.addEventListener('click', function () {
+      var name = document.getElementById('cf-name').value.trim();
+      var business = document.getElementById('cf-business').value.trim();
+      var need = document.getElementById('cf-need').value;
+      var level = document.getElementById('cf-level').value;
+      var lines = currentLang === 'en'
+        ? ['Hi, I want a diagnosis for my business.']
+        : ['Hola, quiero un diagnóstico para mi negocio.'];
+      if (name) lines.push((currentLang === 'en' ? 'Name: ' : 'Nombre: ') + name);
+      if (business) lines.push((currentLang === 'en' ? 'Business: ' : 'Negocio: ') + business);
+      if (need) lines.push((currentLang === 'en' ? 'Needs: ' : 'Necesita: ') + need);
+      lines.push((currentLang === 'en' ? 'Interested level: ' : 'Nivel de interés: ') + level);
+      var message = lines.join('\n');
+      window.open('https://wa.me/19786907277?text=' + encodeURIComponent(message), '_blank', 'noopener');
     });
   }
 </script>
