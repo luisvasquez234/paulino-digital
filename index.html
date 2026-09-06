@@ -1,1 +1,2199 @@
-FILE_PLACEHOLDER
+<meta charset="UTF-8">
+<title>Paulino Digital — Growth Engineering con Inteligencia Artificial</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Paulino Digital",
+  "description": "Páginas web y sistemas de gestión para talleres, barberías y negocios locales.",
+  "url": "https://luisvasquez234.github.io/paulino-digital/",
+  "telephone": "+19786907277",
+  "areaServed": "Lawrence, MA",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Lawrence",
+    "addressRegion": "MA",
+    "addressCountry": "US"
+  }
+}
+</script>
+<style>
+  :root {
+    --font-display: -apple-system, "system-ui", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    --bg: #0A0A0A;
+    --paper: #151513;
+    --paper-shadow: rgba(0,0,0,0.55);
+    --ink: #EDEAE2;
+    --ink-soft: #B7AE9A;
+    --rust: #D4AF37;
+    --rust-dark: #9C7A24;
+    --gold-light: #F2DE9A;
+    --navy: #9C7A24;
+    --red: #C1585A;
+    --amber: #B98B3E;
+    --green: #86BE9B;
+    --perf: rgba(212,175,55,0.25);
+    --text-on-bg: var(--ink);
+    --text-on-bg-soft: var(--ink-soft);
+    --line-on-bg: rgba(212,175,55,0.28);
+    --header-bg: rgba(10,10,10,0.92);
+  }
+
+  :root[data-theme="light"] {
+    --bg: #F5F1E6;
+    --paper: #FFFFFF;
+    --paper-shadow: rgba(60,50,20,0.15);
+    --ink: #221D14;
+    --ink-soft: #6B6250;
+    --rust: #96751B;
+    --navy: #7A5F16;
+    --green: #2F7A50;
+    --line-on-bg: rgba(150,117,27,0.35);
+    --perf: rgba(150,117,27,0.28);
+    --header-bg: rgba(245,241,230,0.92);
+  }
+
+  * { box-sizing: border-box; }
+
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    margin: 0;
+    background:
+      radial-gradient(120% 60% at 20% 0%, rgba(212,175,55,0.07), transparent 60%),
+      var(--bg);
+    color: var(--text-on-bg);
+    font-family: Georgia, 'Times New Roman', serif;
+    line-height: 1.55;
+    overflow-x: hidden;
+  }
+
+  a { color: inherit; }
+
+  .wrap {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .mono {
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 0.03em;
+  }
+
+  .eyebrow {
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 0.72rem;
+    color: var(--rust);
+    font-weight: 700;
+  }
+
+  .stamp {
+    font-family: var(--font-display);
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    position: relative;
+    display: inline-block;
+    text-wrap: balance;
+  }
+  .stamp .hl { color: var(--rust); }
+
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    background: var(--rust);
+    color: #0A0A0A;
+    padding: 12px 20px;
+    z-index: 100;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+  }
+  .skip-link:focus {
+    left: 12px;
+    top: 12px;
+  }
+
+  /* ---------- Header ---------- */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--header-bg);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 0;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .brand {
+    font-family: Georgia, serif;
+    text-transform: uppercase;
+    font-size: 1.05rem;
+    letter-spacing: 0.02em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .brand .logo {
+    width: 20px;
+    height: 20px;
+    color: var(--rust);
+    flex-shrink: 0;
+    transform: rotate(-10deg);
+    transition: transform 0.2s ease;
+  }
+  .brand:hover .logo { transform: rotate(6deg) scale(1.08); }
+  .nav-right { display: flex; align-items: center; gap: 14px; }
+  .lang-group { display: flex; }
+  .theme-toggle {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--line-on-bg);
+    border-radius: 50%;
+    background: transparent;
+    color: var(--text-on-bg);
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: border-color 0.15s ease, color 0.15s ease;
+  }
+  .theme-toggle:hover { border-color: var(--rust); color: var(--rust); }
+  .theme-toggle svg { width: 18px; height: 18px; }
+  .lang-btn {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 7px 11px;
+    border: 2px solid var(--line-on-bg);
+    background: transparent;
+    color: var(--text-on-bg-soft);
+    cursor: pointer;
+  }
+  .lang-group .lang-btn:first-child { border-right: none; }
+  .lang-btn.active { background: var(--navy); border-color: var(--navy); color: #fff; }
+  .nav-cta {
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    border: 2px solid var(--text-on-bg);
+    padding: 9px 16px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease;
+  }
+  .nav-cta:hover {
+    background: var(--rust);
+    border-color: var(--rust);
+    color: #0A0A0A;
+    transform: translateY(-2px);
+  }
+  .nav-cta:focus-visible, a:focus-visible, button:focus-visible,
+  .sign:focus-visible, input:focus-visible {
+    outline: 3px solid var(--navy);
+    outline-offset: 2px;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    padding: 56px 0 88px;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 48px;
+    align-items: center;
+    position: relative;
+  }
+  #bg-particles {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    display: block;
+  }
+  .hero > div {
+    position: relative;
+    z-index: 1;
+  }
+  .eyebrow-dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--rust);
+    margin-right: 8px;
+  }
+  .industry-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .industry-card {
+    background-color: var(--paper);
+    border: 1px solid var(--line-on-bg);
+    box-shadow: 0 8px 18px -14px var(--paper-shadow);
+    padding: 22px 14px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.85rem;
+    color: var(--ink);
+  }
+  .industry-icon { display: block; font-size: 1.8rem; margin-bottom: 10px; }
+  @media (max-width: 880px) {
+    .industry-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  .hero h1 {
+    font-size: clamp(2.4rem, 5vw, 3.6rem);
+    line-height: 1.04;
+    margin: 0 0 22px;
+  }
+  .hero p.lede {
+    font-size: 1.15rem;
+    color: var(--text-on-bg-soft);
+    max-width: 46ch;
+    margin: 0 0 30px;
+  }
+  .hero-ctas {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .ticket-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+  .tab-btn {
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    font-weight: 700;
+    background: transparent;
+    color: var(--text-on-bg-soft);
+    border: 2px solid var(--line-on-bg);
+    padding: 7px 12px;
+    cursor: pointer;
+    transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  }
+  .tab-btn:hover { transform: translateY(-2px); }
+  .tab-btn.active {
+    background: var(--rust);
+    border-color: var(--rust);
+    color: #0A0A0A;
+  }
+  .btn-primary {
+    background: var(--rust);
+    color: #0A0A0A;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    font-size: 0.8rem;
+    padding: 15px 28px;
+    border: 1px solid var(--rust);
+    display: inline-block;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, color 0.15s ease;
+  }
+  .btn-primary:hover { background: var(--gold-light); border-color: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 20px -8px rgba(212,175,55,0.5); }
+  .btn-primary:active { transform: translateY(0); box-shadow: none; }
+  .btn-ghost {
+    background: transparent;
+    color: var(--text-on-bg);
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    font-size: 0.8rem;
+    padding: 15px 22px;
+    border: 1px solid var(--line-on-bg);
+    display: inline-block;
+    transition: border-color 0.15s ease, color 0.15s ease;
+  }
+  .btn-ghost:hover { border-color: var(--rust); color: var(--rust); }
+
+  /* ticket component, reused across sections */
+  .ticket, .sign, .stub, .before, .after, .cta-ticket, .faq-item, .feature, .bio-card, .guarantee, .case-mini {
+    background-image: radial-gradient(140% 100% at 10% 0%, rgba(212,175,55,0.05), transparent 60%);
+    border: 1px solid var(--line-on-bg);
+  }
+  .ticket {
+    background-color: var(--paper);
+    color: var(--ink);
+    position: relative;
+    box-shadow: 0 14px 30px -14px var(--paper-shadow);
+    padding: 26px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .ticket-no {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    color: var(--rust);
+    text-transform: uppercase;
+  }
+
+  .demo-ticket {
+    animation: settle 0.6s ease-out 0.1s both;
+  }
+  @keyframes settle {
+    from { transform: translateY(14px); opacity: 0; }
+    to   { transform: translateY(0); opacity: 1; }
+  }
+  .demo-ticket h3 {
+    font-family: Georgia, serif;
+    text-transform: uppercase;
+    font-size: 1.05rem;
+    margin: 6px 0 14px;
+    letter-spacing: 0.01em;
+  }
+  .demo-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    padding: 7px 0;
+    border-bottom: 1px solid rgba(212,175,55,0.15);
+    gap: 12px;
+  }
+  .demo-row:last-of-type { border-bottom: none; }
+  .demo-row span:first-child { color: var(--ink-soft); }
+  .demo-row span:last-child { font-family: Arial, Helvetica, sans-serif; text-align: right; }
+  .chip {
+    display: inline-block;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 3px 9px;
+    background: rgba(134,190,155,0.15);
+    color: var(--green);
+    font-weight: 700;
+  }
+
+  /* ---------- section shell ---------- */
+  section { padding: 74px 0; position: relative; }
+  .section-head { max-width: 62ch; margin: 0 0 40px; }
+  .section-head h2 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    font-size: clamp(1.7rem, 3.2vw, 2.3rem);
+    margin: 10px 0 0;
+    text-wrap: balance;
+  }
+
+  /* ---------- trust row ---------- */
+  .trust-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 22px;
+    margin-top: 26px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.76rem;
+    letter-spacing: 0.02em;
+    color: var(--text-on-bg-soft);
+  }
+  .trust-row span { display: flex; align-items: center; gap: 8px; }
+  .trust-row span::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--rust);
+    display: inline-block;
+  }
+
+  /* ---------- faq ---------- */
+  .faq { max-width: 74ch; }
+  .faq-item {
+    background-color: var(--paper);
+    color: var(--ink);
+    position: relative;
+    box-shadow: 0 8px 18px -14px var(--paper-shadow);
+  }
+  .faq-item + .faq-item { border-top: 2px dashed var(--perf); }
+  .faq-item summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 18px 46px 18px 22px;
+    font-family: Georgia, serif;
+    font-size: 0.98rem;
+    letter-spacing: 0.01em;
+    position: relative;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after {
+    content: "+";
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--rust);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+  .faq-item[open] summary::after { content: "\2212"; }
+  .faq-item p {
+    margin: 0;
+    padding: 0 22px 20px;
+    color: var(--ink-soft);
+    font-size: 0.92rem;
+    max-width: 60ch;
+  }
+
+  /* ---------- rubros ---------- */
+  .rubros {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 26px;
+  }
+  .sign {
+    background-color: var(--paper);
+    color: var(--ink);
+    padding: 30px 24px 26px;
+    position: relative;
+    box-shadow: 0 10px 24px -14px var(--paper-shadow);
+  }
+  .sign::before {
+    content: "";
+    position: absolute;
+    top: -9px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 3px solid var(--rust);
+    box-sizing: border-box;
+  }
+  .sign svg { width: 34px; height: 34px; color: var(--rust); }
+  .sign h3 {
+    font-family: Georgia, serif;
+    text-transform: uppercase;
+    font-size: 1.05rem;
+    margin: 16px 0 8px;
+  }
+  .sign p { margin: 0; color: var(--ink-soft); font-size: 0.95rem; }
+
+  /* ---------- proceso ---------- */
+  .proceso {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    position: relative;
+  }
+  .stub {
+    background-color: var(--paper);
+    color: var(--ink);
+    padding: 24px 22px;
+    position: relative;
+  }
+  .stub:not(:last-child) {
+    border-right: 2px dashed var(--perf);
+  }
+  .stub .num {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.78rem;
+    color: var(--rust);
+    font-weight: 700;
+  }
+  .stub h3 {
+    font-family: Georgia, serif;
+    text-transform: uppercase;
+    font-size: 1rem;
+    margin: 10px 0 8px;
+  }
+  .stub p { margin: 0; color: var(--ink-soft); font-size: 0.92rem; }
+
+  /* ---------- caso real ---------- */
+  .browser-frame {
+    display: flex;
+    gap: 6px;
+    padding: 10px 14px;
+    border-bottom: 1px solid rgba(212,175,55,0.15);
+  }
+  .browser-frame span {
+    width: 9px; height: 9px; border-radius: 50%; background: var(--line-on-bg);
+  }
+  .compare {
+    position: relative;
+    box-shadow: 0 14px 30px -14px var(--paper-shadow);
+  }
+  .before, .after {
+    padding: 28px 26px;
+  }
+  .after { padding-top: 0; }
+  .before, .after { min-height: 220px; }
+  .before {
+    background: repeating-linear-gradient(-2deg, transparent, transparent 27px, rgba(255,255,255,0.035) 27px, rgba(255,255,255,0.035) 28px), var(--paper);
+    color: var(--ink-soft);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.88rem;
+  }
+  .before .strike { text-decoration: line-through; text-decoration-color: var(--red); }
+  .after {
+    background-color: var(--paper);
+    color: var(--ink);
+  }
+  .after-body { padding: 20px 26px 28px; }
+  .before-clip {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    clip-path: inset(0 calc(100% - var(--pos, 55%)) 0 0);
+  }
+  .badge-ok {
+    background: rgba(134,190,155,0.15);
+    color: var(--green);
+  }
+  .label-before, .label-after {
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.7rem;
+    font-weight: 700;
+    display: block;
+    margin: 0 0 10px;
+  }
+  .label-before { color: var(--red); }
+  .label-after { color: var(--green); text-align: right; }
+  .compare-range {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    opacity: 0;
+    cursor: ew-resize;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  .handle {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--rust);
+    left: var(--pos, 55%);
+    transform: translateX(-50%);
+    pointer-events: none;
+  }
+  .handle::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--rust);
+    transform: translate(-50%, -50%);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.35);
+  }
+  .handle::after {
+    content: "\21D4";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #0A0A0A;
+    font-size: 1rem;
+    font-weight: 700;
+  }
+  .approved-stamp {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.5) rotate(-8deg);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 6;
+    border: 1px solid var(--rust);
+    color: var(--rust);
+    background: rgba(10,10,10,0.85);
+    padding: 10px 24px;
+    font-family: Georgia, serif;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-size: 1.1rem;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+  .approved-stamp.show {
+    opacity: 0.85;
+    transform: translate(-50%, -50%) scale(1) rotate(-10deg);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .approved-stamp { transition: none; }
+  }
+
+  .compare-hint {
+    margin-top: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--text-on-bg-soft);
+    text-align: center;
+  }
+  .quote {
+    margin-top: 26px;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--text-on-bg-soft);
+    max-width: 62ch;
+  }
+  .quote span.mono { font-style: normal; color: var(--rust); display: block; margin-top: 8px; font-size: 0.8rem; }
+
+  .app-shots-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+    margin-top: 12px;
+  }
+  .app-shot {
+    margin: 0;
+    background-color: var(--paper);
+    border: 1px solid var(--line-on-bg);
+    box-shadow: 0 10px 22px -14px var(--paper-shadow);
+    overflow: hidden;
+  }
+  .app-shot img { display: block; width: 100%; height: auto; }
+  .app-shot figcaption {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    padding: 12px 16px 16px;
+  }
+  @media (max-width: 880px) {
+    .app-shots-grid { grid-template-columns: 1fr; }
+  }
+
+  .case-mini {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    background-color: var(--paper);
+    color: var(--ink);
+    padding: 20px 22px;
+    margin-top: 26px;
+    box-shadow: 0 8px 18px -14px var(--paper-shadow);
+  }
+  .case-mini .badge2 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--navy);
+    border: 2px solid var(--navy);
+    padding: 4px 9px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .case-mini p { margin: 0; font-size: 0.92rem; color: var(--ink-soft); }
+
+  /* ---------- features (funciones incluidas) ---------- */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+  }
+  .feature {
+    background-color: var(--paper);
+    color: var(--ink);
+    padding: 20px 20px 18px;
+    box-shadow: 0 8px 18px -14px var(--paper-shadow);
+  }
+  .feature h3 {
+    font-family: Georgia, serif;
+    text-transform: uppercase;
+    font-size: 0.86rem;
+    margin: 0 0 8px;
+  }
+  .feature p { margin: 0; color: var(--ink-soft); font-size: 0.85rem; }
+  .icon-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    background: rgba(212,175,55,0.12);
+    font-size: 1.25rem;
+    margin-bottom: 12px;
+  }
+
+  /* ---------- cotizador ---------- */
+  .quote-box {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 30px;
+    align-items: start;
+  }
+  .quote-options {
+    background-color: var(--paper);
+    background-image: radial-gradient(140% 100% at 10% 0%, rgba(212,175,55,0.05), transparent 60%);
+    border: 1px solid var(--line-on-bg);
+    padding: 10px 24px;
+    box-shadow: 0 10px 22px -14px var(--paper-shadow);
+  }
+  .check {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 0;
+    font-size: 0.95rem;
+    color: var(--ink);
+    cursor: pointer;
+  }
+  .check:not(:last-child) { border-bottom: 1px dashed var(--perf); }
+  .check input {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--rust);
+    flex-shrink: 0;
+  }
+  .check .price-tag {
+    margin-left: auto;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.8rem;
+    color: var(--ink-soft);
+    white-space: nowrap;
+  }
+  .quote-ticket {
+    text-align: center;
+    position: sticky;
+    top: 20px;
+  }
+  .quote-ticket .quote-total {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2.1rem;
+    font-weight: 700;
+    color: var(--rust);
+    margin: 8px 0 2px;
+    font-variant-numeric: tabular-nums;
+  }
+  .quote-ticket .quote-monthly {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.8rem;
+    color: var(--ink-soft);
+    margin: 0 0 18px;
+  }
+  .quote-ticket .btn-primary { width: 100%; }
+
+  /* ---------- tarjeta personalizada ---------- */
+  .custom-quote {
+    margin-top: 26px;
+    background-color: var(--paper);
+    background-image: radial-gradient(140% 100% at 10% 0%, rgba(212,175,55,0.05), transparent 60%);
+    border: 1px solid var(--line-on-bg);
+    padding: 22px 24px;
+    box-shadow: 0 10px 22px -14px var(--paper-shadow);
+  }
+  .custom-quote > p {
+    margin: 0 0 14px;
+    font-family: Georgia, serif;
+    font-size: 1.05rem;
+    color: var(--ink);
+  }
+  .custom-row { display: flex; gap: 10px; flex-wrap: wrap; }
+  .custom-row input {
+    flex: 1;
+    min-width: 200px;
+    font-family: Georgia, serif;
+    font-size: 0.95rem;
+    padding: 12px 14px;
+    border: 2px solid var(--line-on-bg);
+    background: transparent;
+    color: var(--ink);
+  }
+  .custom-row input::placeholder { color: var(--ink-soft); opacity: 0.7; }
+  .custom-row button { cursor: pointer; }
+  .custom-result { margin-top: 18px; }
+  .custom-result[hidden] { display: none; }
+
+  /* ---------- vs table ---------- */
+  .vs { display: grid; grid-template-columns: 1fr 1fr; gap: 0 22px; }
+  .vs-col { display: flex; flex-direction: column; }
+  .vs-head {
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.76rem;
+    font-weight: 700;
+    padding-bottom: 12px;
+    margin-bottom: 6px;
+    border-bottom: 2px solid var(--line-on-bg);
+  }
+  .vs-head.bad { color: var(--red); }
+  .vs-head.good { color: var(--green); }
+  .vs-item {
+    font-size: 0.92rem;
+    padding: 12px 0;
+    border-bottom: 1px dashed var(--perf);
+    color: var(--ink-soft);
+  }
+  .vs-col.good .vs-item { color: var(--ink); }
+
+  /* ---------- guarantee ---------- */
+  .guarantee {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background-color: var(--paper);
+    border: 1px solid var(--line-on-bg);
+    color: var(--ink);
+    padding: 14px 20px;
+    box-shadow: 0 8px 18px -14px var(--paper-shadow);
+    margin-bottom: 32px;
+    font-size: 0.88rem;
+    max-width: 100%;
+  }
+  .guarantee strong { color: var(--rust); }
+  .guarantee .g-icon {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    color: var(--rust);
+    border: 2px solid var(--rust);
+    border-radius: 50%;
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 0.8rem;
+  }
+
+  /* ---------- sobre mi ---------- */
+  .bio-card {
+    background-color: var(--paper);
+    color: var(--ink);
+    padding: 30px;
+    box-shadow: 0 10px 22px -14px var(--paper-shadow);
+    display: flex;
+    gap: 28px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .bio-card p { margin: 0; color: var(--ink-soft); max-width: 66ch; }
+  .bio-cert-link { flex-shrink: 0; display: block; }
+  .bio-cert-img {
+    display: block;
+    width: 220px;
+    max-width: 100%;
+    border: 1px solid var(--line-on-bg);
+    box-shadow: 0 10px 22px -12px var(--paper-shadow);
+    transition: transform 0.2s ease;
+  }
+  .bio-cert-link:hover .bio-cert-img { transform: translateY(-4px); }
+  .bio-badge {
+    display: inline-block;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    border: 2px solid var(--navy);
+    color: var(--navy);
+    padding: 6px 11px;
+    margin-top: 14px;
+  }
+
+  /* ---------- precios ---------- */
+  .precios {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 34px 26px;
+  }
+  .price-card {
+    padding-top: 34px;
+  }
+  .price-card .tier {
+    font-family: Georgia, serif;
+    text-transform: uppercase;
+    font-size: 1.15rem;
+    margin: 4px 0 2px;
+  }
+  .price-card .price {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--rust);
+    margin: 10px 0 2px;
+  }
+  .price-card .monthly {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    margin: 0 0 16px;
+  }
+  .price-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 6px;
+    font-size: 0.9rem;
+  }
+  .price-card li {
+    padding: 5px 0 5px 18px;
+    position: relative;
+    color: var(--ink-soft);
+  }
+  .price-card li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--rust);
+  }
+
+  /* ---------- contacto ---------- */
+  .contacto {
+    padding-bottom: 100px;
+  }
+  .cta-ticket {
+    background-color: var(--paper);
+    color: var(--ink);
+    padding: 46px 40px;
+    display: grid;
+    grid-template-columns: 1.3fr 0.7fr;
+    gap: 30px;
+    align-items: center;
+    box-shadow: 0 18px 40px -18px var(--paper-shadow);
+    position: relative;
+  }
+  @media (min-width: 881px) {
+    .cta-ticket.with-form { grid-template-columns: 1fr 1fr; align-items: start; }
+    .cta-ticket.with-form::before { left: 50%; }
+  }
+  .contact-form-card {
+    background-color: var(--bg);
+    border: 1px solid var(--line-on-bg);
+    box-shadow: 0 10px 22px -14px var(--paper-shadow);
+    padding: 26px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    text-align: left;
+  }
+  .contact-form-card label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.8rem;
+    color: var(--ink-soft);
+  }
+  .contact-form-card input,
+  .contact-form-card select {
+    font-family: Georgia, serif;
+    font-size: 0.95rem;
+    padding: 10px 12px;
+    border: 2px solid var(--line-on-bg);
+    background: transparent;
+    color: var(--ink);
+  }
+  .contact-form-card select { cursor: pointer; }
+  .cta-ticket::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 68%;
+    border-left: 2px dashed var(--perf);
+  }
+  .cta-ticket h2 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    margin: 8px 0 12px;
+  }
+  .cta-ticket p { color: var(--ink-soft); margin: 0; max-width: 42ch; }
+  .cta-side { text-align: center; }
+  .cta-side .ticket-no { display: block; margin-bottom: 12px; }
+  .cta-side .btn-ghost { display: block; margin-top: 10px; }
+
+  .floating-whatsapp {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background: var(--rust);
+    color: #0A0A0A;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 24px -8px rgba(0,0,0,0.5);
+    text-decoration: none;
+    opacity: 0;
+    transform: translateY(14px) scale(0.9);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    z-index: 40;
+  }
+  .floating-whatsapp.show { opacity: 1; transform: translateY(0) scale(1); }
+  .floating-whatsapp svg { width: 26px; height: 26px; }
+  @media (prefers-reduced-motion: reduce) {
+    .floating-whatsapp { transition: none; }
+  }
+
+  footer {
+    padding: 30px 0 50px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.78rem;
+    color: var(--text-on-bg-soft);
+    letter-spacing: 0.04em;
+  }
+  .footer-link-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    letter-spacing: inherit;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+
+  /* ---------- signature details ---------- */
+  .verified-badge {
+    display: inline-block;
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.62rem;
+    font-weight: 600;
+    color: var(--rust);
+    border: 1px solid var(--rust);
+    padding: 4px 10px;
+    margin-bottom: 10px;
+  }
+
+  .sign, .stub, .price-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .sign:hover, .stub:hover, .price-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 32px -16px var(--paper-shadow);
+  }
+  .sign { cursor: pointer; }
+  .sign .see-demo {
+    display: inline-block;
+    margin-top: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--rust);
+    font-weight: 700;
+  }
+  .sign .see-demo::after { content: " \2192"; }
+
+  .demo-ticket .ticket-no, .demo-ticket h3, .demo-ticket .demo-row {
+    opacity: 0;
+    animation: printline 0.45s ease forwards;
+  }
+  .demo-ticket .ticket-no { animation-delay: 0.55s; }
+  .demo-ticket h3 { animation-delay: 0.7s; }
+  .demo-ticket .demo-row:nth-of-type(1) { animation-delay: 0.85s; }
+  .demo-ticket .demo-row:nth-of-type(2) { animation-delay: 1s; }
+  .demo-ticket .demo-row:nth-of-type(3) { animation-delay: 1.15s; }
+  .demo-ticket .demo-row:nth-of-type(4) { animation-delay: 1.3s; }
+  @keyframes printline {
+    from { opacity: 0; transform: translateY(5px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    .demo-ticket { animation: none; }
+    .demo-ticket .ticket-no, .demo-ticket h3, .demo-ticket .demo-row { opacity: 1; animation: none; }
+  }
+
+  @media (max-width: 880px) {
+    .hero { grid-template-columns: 1fr; padding-top: 30px; }
+    .rubros { grid-template-columns: 1fr; }
+    .proceso { grid-template-columns: 1fr; }
+    .stub:not(:last-child) { border-right: none; border-bottom: 2px dashed var(--perf); }
+    .before, .after { padding: 20px 18px; min-height: 260px; }
+    .precios { grid-template-columns: 1fr; }
+    .ticket-tabs { justify-content: center; }
+    .cta-ticket { grid-template-columns: 1fr; text-align: center; }
+    .cta-ticket::before { display: none; }
+    .cta-side { margin-top: 10px; }
+    .vs { grid-template-columns: 1fr; gap: 22px 0; }
+    .case-mini { flex-direction: column; text-align: center; }
+    .bio-card { flex-direction: column; text-align: center; }
+    .quote-box { grid-template-columns: 1fr; }
+    .quote-ticket { position: static; }
+    .floating-whatsapp { width: 50px; height: 50px; right: 16px; bottom: 16px; }
+  }
+
+  /* ---------- print (flyer) ---------- */
+  @media print {
+    :root {
+      --bg: #FFFFFF;
+      --paper: #FFFFFF;
+      --paper-shadow: rgba(20,25,32,0.12);
+      --ink: #1C2430;
+      --ink-soft: #4A5462;
+      --text-on-bg: #1C2430;
+      --text-on-bg-soft: #4A5462;
+      --line-on-bg: rgba(28,36,48,0.35);
+    }
+    body { background: #fff; }
+    .doodle, .floating-whatsapp, .lang-group, .theme-toggle, .ticket-tabs,
+    .see-demo, .compare-range, .handle, .compare-hint, .before-clip,
+    .custom-row, .quote-options { display: none !important; }
+    * { box-shadow: none !important; filter: none !important; }
+    a { text-decoration: none; }
+    section { padding: 18px 0 !important; }
+    .hero { grid-template-columns: 1fr 1fr !important; padding-top: 0 !important; }
+    .rubros, .proceso, .precios, .features-grid { gap: 12px !important; }
+    .sign, .stub, .price-card, .feature, .ticket, .faq-item, .cta-ticket, .bio-card { break-inside: avoid; }
+    .faq-item:not([open]) p { display: none; }
+    .print-only { display: block !important; }
+  }
+  .print-only { display: none; }
+</style>
+
+
+<a class="skip-link" href="#main" data-i18n="skip-link">Saltar al contenido</a>
+
+<header class="wrap">
+  <div class="nav">
+    <div class="brand"><svg class="logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 12 12 2h7a3 3 0 0 1 3 3v7L12 22a2 2 0 0 1-2.8 0l-7.2-7.2a2 2 0 0 1 0-2.8z"/><circle cx="17" cy="7" r="1.6" fill="currentColor" stroke="none"/></svg>Paulino Digital</div>
+    <div class="nav-right">
+      <div class="lang-group" role="group" aria-label="Idioma / Language">
+        <button type="button" class="lang-btn active" data-lang="es">ES</button>
+        <button type="button" class="lang-btn" data-lang="en">EN</button>
+      </div>
+      <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Cambiar tema claro u oscuro"></button>
+      <a class="nav-cta" href="#contacto" data-i18n="nav-cta">Hablemos</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap" id="main">
+
+  <section class="hero" style="padding-top:8px;">
+    <canvas id="bg-particles" aria-hidden="true"></canvas>
+    <div>
+      <p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span><span data-i18n="hero-eyebrow">Lawrence, MA · sistemas a la medida</span></p>
+      <h1 class="stamp" id="hero-h1" data-text="Tu negocio, organizado de verdad" data-i18n-html="hero-h1">Tu negocio,<br>organizado <span class="hl">de verdad</span></h1>
+      <p class="lede" data-i18n="hero-lede">Páginas web y sistemas de gestión para talleres, barberías y negocios locales. Se acabaron las facturas perdidas y las citas en un cuaderno.</p>
+      <div class="hero-ctas">
+        <a class="btn-primary" href="#contacto" data-i18n="btn-quote">Pide tu cotización</a>
+        <a class="btn-ghost" href="#precios" data-i18n="btn-plans">Ver planes</a>
+        <a class="btn-ghost" href="tel:+19786907277" data-i18n="btn-call">Llamar</a>
+      </div>
+      <div class="trust-row">
+        <span data-i18n="trust-1">1–3 semanas de entrega</span>
+        <span data-i18n="trust-2">Soporte directo por WhatsApp</span>
+        <span data-i18n="trust-3">Hecho en Lawrence, MA</span>
+      </div>
+    </div>    <div>
+      <div class="ticket-tabs" role="tablist" aria-label="Ver ejemplo por tipo de negocio">
+        <button type="button" class="tab-btn active" data-variant="taller" role="tab" aria-selected="true" data-i18n="tab-taller">Taller</button>
+        <button type="button" class="tab-btn" data-variant="barberia" role="tab" aria-selected="false" data-i18n="tab-barberia">Barbería</button>
+        <button type="button" class="tab-btn" data-variant="negocio" role="tab" aria-selected="false" data-i18n="tab-negocio">Negocio local</button>
+      </div>
+      <div class="ticket demo-ticket">
+        <span class="ticket-no" id="tk-no">N.º 0001 · ORDEN DE SERVICIO</span>
+        <h3 id="tk-title">Gil's Muffler Inc</h3>
+        <div class="demo-row"><span id="tk-l1">Vehículo</span><span id="tk-v1">Honda Civic '19</span></div>
+        <div class="demo-row"><span id="tk-l2">Servicio</span><span id="tk-v2">Sistema completo</span></div>
+        <div class="demo-row"><span id="tk-l3">Facturas al día</span><span id="tk-v3">12 → 0</span></div>
+        <div class="demo-row"><span id="tk-l4">Estado</span><span id="tk-v4" class="chip">Activo</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="rubros">
+    <div class="section-head">
+      <p class="eyebrow"><span data-i18n="rubros-eyebrow">Para quién es esto</span></p>
+      <h2 data-i18n="rubros-h2">Si tu negocio vive de clientes recurrentes, esto es para ti</h2>
+    </div>
+    <div class="rubros">
+      <div class="sign reveal" data-variant="taller" role="button" tabindex="0">        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14.7 6.3a4 4 0 0 0-5.4 4.6L3 17.2V21h3.8l6.3-6.3a4 4 0 0 0 4.6-5.4l-2.6 2.6-2-2 2.6-2.6z"/></svg>
+        <h3 data-i18n="rubro1-h3">Talleres mecánicos</h3>
+        <p data-i18n="rubro1-p">Clientes, facturas e inventario de piezas en un solo lugar, sin papeles sueltos.</p>
+        <span class="see-demo" data-i18n="see-demo">Ver ejemplo</span>
+      </div>
+      <div class="sign reveal" data-variant="barberia" role="button" tabindex="0">        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 5a3 3 0 1 0 3 3l9 9M6 19a3 3 0 1 0 3-3l9-9M9 9l11 11M9 15 20 4"/></svg>
+        <h3 data-i18n="rubro2-h3">Barberías y salones</h3>
+        <p data-i18n="rubro2-p">Citas y clientes organizados, sin agenda de papel ni turnos olvidados.</p>
+        <span class="see-demo" data-i18n="see-demo">Ver ejemplo</span>
+      </div>
+      <div class="sign reveal" data-variant="negocio" role="button" tabindex="0">        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 10 12 3l9 7v10a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>
+        <h3 data-i18n="rubro3-h3">Negocios locales</h3>
+        <p data-i18n="rubro3-p">Presencia profesional en línea, fácil de encontrar y de mantener al día.</p>
+        <span class="see-demo" data-i18n="see-demo">Ver ejemplo</span>
+      </div>
+    </div>
+
+    <div class="custom-quote reveal">
+      <p data-i18n="custom-lead">¿Tu negocio no está en la lista?</p>
+      <div class="custom-row">
+        <input type="text" id="custom-business" data-i18n-placeholder="custom-placeholder" placeholder="Escribe tu tipo de negocio, ej. lavandería">
+        <button type="button" class="btn-ghost" id="custom-generate" data-i18n="custom-btn">Generar ejemplo</button>
+      </div>
+      <div class="ticket custom-result" id="custom-result" hidden>        <span class="ticket-no" data-i18n="custom-result-no">Ejemplo generado</span>
+        <h3 id="custom-result-title">Sistema para tu negocio</h3>
+        <div class="demo-row"><span data-i18n="custom-r1">Clientes</span><span data-i18n="custom-r1v">Organizados en un solo lugar</span></div>
+        <div class="demo-row"><span data-i18n="custom-r2">Citas o pedidos</span><span data-i18n="custom-r2v">Sin agenda de papel</span></div>
+        <div class="demo-row"><span data-i18n="custom-r3">Pagos</span><span data-i18n="custom-r3v">Facturas siempre a la mano</span></div>
+        <div class="demo-row"><span data-i18n="custom-r4">Estado</span><span class="chip" data-i18n="custom-r4v">Listo para ti</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="industrias">
+    <div class="section-head">
+      <p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span><span data-i18n="ind-eyebrow">Para quién trabajo</span></p>
+      <h2 data-i18n="ind-h2">Tipos de negocio que puedo digitalizar</h2>
+      <p class="lede" style="margin-top:14px;" data-i18n="ind-lede">Ya construí sistemas reales para un taller mecánico, una empresa de paneles solares y una barbería — y estoy listo para ayudar a estos otros tipos de negocio también.</p>
+    </div>
+    <div class="industry-grid">
+      <div class="industry-card reveal"><span class="industry-icon" aria-hidden="true">🔧</span><span data-i18n="ind1">Talleres mecánicos</span></div>
+      <div class="industry-card reveal"><span class="industry-icon" aria-hidden="true">💈</span><span data-i18n="ind2">Barberías y salones</span></div>
+      <div class="industry-card reveal"><span class="industry-icon" aria-hidden="true">🏬</span><span data-i18n="ind3">Negocios locales</span></div>
+      <div class="industry-card reveal"><span class="industry-icon" aria-hidden="true">🛒</span><span data-i18n="ind4">Ecommerce</span></div>
+      <div class="industry-card reveal"><span class="industry-icon" aria-hidden="true">🏥</span><span data-i18n="ind5">Salud</span></div>
+      <div class="industry-card reveal"><span class="industry-icon" aria-hidden="true">💼</span><span data-i18n="ind6">Servicios profesionales</span></div>
+      <div class="industry-card reveal"><span class="industry-icon" aria-hidden="true">🍽️</span><span data-i18n="ind7">Gastronomía</span></div>
+      <div class="industry-card reveal"><span class="industry-icon" aria-hidden="true">🏠</span><span data-i18n="ind8">Inmobiliario</span></div>
+    </div>
+  </section>
+
+  <section id="proceso">    <div class="section-head">
+      <p class="eyebrow"><span data-i18n="proceso-eyebrow">Cómo funciona</span></p>
+      <h2 data-i18n="proceso-h2">Tres tickets, un proyecto terminado</h2>
+    </div>
+    <div class="proceso">
+      <div class="stub reveal">
+        <span class="num mono">STUB #01</span>
+        <h3 data-i18n="stub1-h3">Hablamos</h3>
+        <p data-i18n="stub1-p">Me cuentas qué necesita tu negocio. Gratis, sin compromiso.</p>
+      </div>
+      <div class="stub reveal">
+        <span class="num mono">STUB #02</span>
+        <h3 data-i18n="stub2-h3">Lo construyo</h3>
+        <p data-i18n="stub2-p">Armo tu página o sistema en 1 a 3 semanas.</p>
+      </div>
+      <div class="stub reveal">
+        <span class="num mono">STUB #03</span>
+        <h3 data-i18n="stub3-h3">Tú lo usas</h3>
+        <p data-i18n="stub3-p">Te enseño a usarlo y te doy soporte continuo.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="caso">    <div class="section-head">
+      <p class="eyebrow"><span data-i18n="caso-eyebrow">Caso real</span></p>
+      <h2 data-i18n="caso-h2">Gil's Muffler Inc dejó el papel atrás</h2>
+    </div>
+    <div class="compare reveal" id="compare">
+      <div class="after">
+        <div class="browser-frame"><span></span><span></span><span></span></div>
+        <div class="after-body">
+          <p class="label-after" data-i18n="label-after">Ahora</p>
+          <div class="demo-row"><span data-i18n="caso-a1">Facturas pendientes</span><span>0</span></div>
+          <div class="demo-row"><span data-i18n="caso-a2">Clientes registrados</span><span>340+</span></div>
+          <div class="demo-row"><span data-i18n="caso-a3">Piezas bajo stock</span><span class="chip" data-i18n="caso-a3v">Alerta automática</span></div>
+          <div class="demo-row"><span data-i18n="caso-a4">Todo</span><span data-i18n="caso-a4v">Desde el celular</span></div>
+        </div>
+      </div>
+      <div class="before-clip" id="compare-clip">
+        <div class="before">
+          <p class="label-before" data-i18n="label-before">Antes</p>
+          <p class="strike" data-i18n="caso-b1">Factura #0231 — ¿dónde quedó?</p>
+          <p class="strike" data-i18n="caso-b2">Cliente Ramírez — ¿pagó ya?</p>
+          <p class="strike" data-i18n="caso-b3">Piezas de freno — ¿cuántas quedan?</p>
+          <p data-i18n="caso-b4">Todo en cuadernos y post-its.</p>
+        </div>
+      </div>
+      <div class="handle" aria-hidden="true"></div>
+      <input type="range" class="compare-range" id="compare-range" min="0" max="100" value="55" aria-label="Desliza para comparar antes y después">
+      <div class="approved-stamp" id="approved-stamp" aria-hidden="true"><span data-i18n="approved-text">Aprobado</span></div>
+    </div>
+    <p class="compare-hint" data-i18n="compare-hint">Desliza para comparar</p>
+    <p class="quote"><span data-i18n="quote-text">"Ya no se pierden facturas ni se le olvida a nadie quién debe qué."</span><span class="mono" data-i18n="quote-source">— Andrés Gil, dueño de Gil's Muffler Inc</span></p>
+
+    <p class="compare-hint reveal" style="text-align:left;margin-top:36px;" data-i18n="shots-label">Así se ve el sistema por dentro</p>
+    <div class="app-shots-grid reveal">
+      <figure class="app-shot">
+        <div class="browser-frame"><span></span><span></span><span></span></div>
+        <img src="captura-dashboard.jpg" alt="Panel principal del sistema de Gil's Muffler Inc, con resumen de clientes, facturas e ingresos">
+        <figcaption data-i18n="shot1-caption">Panel principal: todo el negocio de un vistazo</figcaption>
+      </figure>
+      <figure class="app-shot">
+        <div class="browser-frame"><span></span><span></span><span></span></div>
+        <img src="captura-configuracion.jpg" alt="Pantalla de configuración del negocio, mostrando cómo se personaliza cada factura">
+        <figcaption data-i18n="shot2-caption">Configuración: tu marca en cada factura</figcaption>
+      </figure>
+    </div>
+
+    <div class="case-mini reveal">
+      <span class="badge2" data-i18n="case2-badge">Otro proyecto real</span>
+      <p data-i18n="case2-text">También construí la página web de una empresa de instalación de paneles solares.</p>
+    </div>
+
+    <div class="case-mini reveal">
+      <span class="badge2" data-i18n="case3-badge">Otro proyecto real</span>
+      <p data-i18n="case3-text">También construí un sistema de reservas en línea para una barbería, Oficio Barber Co., con citas y base de datos en tiempo real.</p>
+    </div>
+  </section>
+
+  <section id="funciones">
+    <div class="section-head">
+      <p class="eyebrow"><span data-i18n="func-eyebrow">Todo incluido</span></p>
+      <h2 data-i18n="func-h2">Funciones que trae tu sistema</h2>
+    </div>
+    <div class="features-grid">
+      <div class="feature reveal">
+        <span class="icon-badge" aria-hidden="true">🔔</span>
+        <h3 data-i18n="func1-h">Aviso de mantenimiento</h3>
+        <p data-i18n="func1-p">Le avisas a tus clientes cuándo les toca su próximo servicio, automáticamente.</p>
+      </div>
+      <div class="feature reveal">
+        <span class="icon-badge" aria-hidden="true">👥</span>
+        <h3 data-i18n="func2-h">Varios usuarios</h3>
+        <p data-i18n="func2-p">Tus empleados pueden tener su propio acceso, no solo tú.</p>
+      </div>
+      <div class="feature reveal">
+        <span class="icon-badge" aria-hidden="true">📋</span>
+        <h3 data-i18n="func3-h">Historial por cliente</h3>
+        <p data-i18n="func3-p">Ve todo lo que un cliente ha pedido y cuánto ha gastado.</p>
+      </div>
+      <div class="feature reveal">
+        <span class="icon-badge" aria-hidden="true">🧾</span>
+        <h3 data-i18n="func4-h">Facturas por WhatsApp</h3>
+        <p data-i18n="func4-p">Envía facturas directo por WhatsApp o correo, sin imprimir nada.</p>
+      </div>
+      <div class="feature reveal">
+        <span class="icon-badge" aria-hidden="true">☁️</span>
+        <h3 data-i18n="func5-h">Respaldo automático</h3>
+        <p data-i18n="func5-p">Tu información se guarda sola, todos los días.</p>
+      </div>
+      <div class="feature reveal">
+        <span class="icon-badge" aria-hidden="true">📅</span>
+        <h3 data-i18n="func6-h">Calendario visual</h3>
+        <p data-i18n="func6-p">Ve todas las citas del día de un vistazo.</p>
+      </div>
+      <div class="feature reveal">
+        <span class="icon-badge" aria-hidden="true">📊</span>
+        <h3 data-i18n="func7-h">Reportes en PDF/Excel</h3>
+        <p data-i18n="func7-p">Exporta tus reportes para tu contador en un clic.</p>
+      </div>
+      <div class="feature reveal">
+        <span class="icon-badge" aria-hidden="true">📶</span>
+        <h3 data-i18n="func8-h">Funciona sin internet</h3>
+        <p data-i18n="func8-p">Puedes seguir trabajando aunque se caiga la conexión un momento.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="ia">
+    <div class="section-head">
+      <p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span><span data-i18n="ia-eyebrow">Inteligencia artificial</span></p>
+      <h2 data-i18n="ia-h2">Un equipo de agentes de IA, trabajando 24/7</h2>
+      <p class="lede" style="margin-top:14px;" data-i18n="ia-lede">Cada agente tiene un rol específico — se integran entre sí para que tú solo hables con el cliente que ya está listo para avanzar.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature reveal">
+        <span class="icon-badge" aria-hidden="true">💬</span>
+        <h3 data-i18n="ia1-h">Agente de Ventas</h3>
+        <p data-i18n="ia1-p">Responde y agenda apenas te escribe un cliente nuevo por WhatsApp.</p>
+        <p class="mono" style="color:var(--green); font-size:0.72rem; margin-top:10px;" data-i18n="ia1-kpi">KPI: % agendado sin que tú contestes</p>
+      </div>
+      <div class="feature reveal">
+        <span class="icon-badge" aria-hidden="true">🎧</span>
+        <h3 data-i18n="ia2-h">Agente de Atención</h3>
+        <p data-i18n="ia2-p">Responde las preguntas más comunes de tus clientes activos, al instante.</p>
+        <p class="mono" style="color:var(--green); font-size:0.72rem; margin-top:10px;" data-i18n="ia2-kpi">KPI: tiempo de primera respuesta</p>
+      </div>
+      <div class="feature reveal">
+        <span class="icon-badge" aria-hidden="true">🛠️</span>
+        <h3 data-i18n="ia3-h">Agente de Soporte</h3>
+        <p data-i18n="ia3-p">Resuelve dudas simples de tus clientes sin que tengas que intervenir.</p>
+        <p class="mono" style="color:var(--green); font-size:0.72rem; margin-top:10px;" data-i18n="ia3-kpi">KPI: % resuelto sin tu ayuda</p>
+      </div>
+      <div class="feature reveal">
+        <span class="icon-badge" aria-hidden="true">📣</span>
+        <h3 data-i18n="ia4-h">Agente de Marketing</h3>
+        <p data-i18n="ia4-p">Te ayuda a generar ideas y textos para promocionar tu negocio.</p>
+        <p class="mono" style="color:var(--green); font-size:0.72rem; margin-top:10px;" data-i18n="ia4-kpi">KPI: piezas generadas por semana</p>
+      </div>
+      <div class="feature reveal">
+        <span class="icon-badge" aria-hidden="true">🤝</span>
+        <h3 data-i18n="ia5-h">Agente Comercial</h3>
+        <p data-i18n="ia5-p">Prioriza tus mensajes para que sepas a quién responder primero.</p>
+        <p class="mono" style="color:var(--green); font-size:0.72rem; margin-top:10px;" data-i18n="ia5-kpi">KPI: tiempo de mensaje a respuesta</p>
+      </div>
+      <div class="feature reveal">
+        <span class="icon-badge" aria-hidden="true">📲</span>
+        <h3 data-i18n="ia6-h">Agente para WhatsApp</h3>
+        <p data-i18n="ia6-p">Lleva la conversación completa con tu cliente, desde la pregunta hasta la cita agendada.</p>
+        <p class="mono" style="color:var(--green); font-size:0.72rem; margin-top:10px;" data-i18n="ia6-kpi">KPI: % resuelto sin que intervengas</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="comparacion">
+    <div class="section-head">
+      <p class="eyebrow"><span data-i18n="vs-eyebrow">La diferencia</span></p>
+      <h2 data-i18n="vs-h2">Con sistema vs. sin sistema</h2>
+    </div>
+    <div class="vs reveal">
+      <div class="vs-col bad">
+        <div class="vs-head bad" data-i18n="vs-bad-head">Sin sistema</div>
+        <div class="vs-item" data-i18n="vs-bad-1">Facturas en papel, a veces perdidas</div>
+        <div class="vs-item" data-i18n="vs-bad-2">Citas anotadas en un cuaderno</div>
+        <div class="vs-item" data-i18n="vs-bad-3">No sabes cuánto stock te queda</div>
+        <div class="vs-item" data-i18n="vs-bad-4">Cada empleado hace las cosas a su manera</div>
+        <div class="vs-item" data-i18n="vs-bad-5">Si se pierde el cuaderno, se pierde todo</div>
+      </div>
+      <div class="vs-col good">
+        <div class="vs-head good" data-i18n="vs-good-head">Con sistema</div>
+        <div class="vs-item" data-i18n="vs-good-1">Facturas guardadas y siempre a la mano</div>
+        <div class="vs-item" data-i18n="vs-good-2">Citas organizadas y con recordatorio</div>
+        <div class="vs-item" data-i18n="vs-good-3">Alertas cuando algo se está por acabar</div>
+        <div class="vs-item" data-i18n="vs-good-4">Todo el equipo usa el mismo sistema</div>
+        <div class="vs-item" data-i18n="vs-good-5">Todo respaldado automáticamente</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="precios">    <div class="section-head">
+      <p class="eyebrow"><span data-i18n="precios-eyebrow">Planes</span></p>
+      <h2 data-i18n="precios-h2">Un nivel para cada etapa de tu negocio</h2>
+    </div>
+
+    <!-- GARANTIA:inicio — pide a Paulino Digital (Claude) que la quite si no la quieres mostrar -->
+    <div class="guarantee reveal">
+      <span class="g-icon">✓</span>
+      <span><strong data-i18n="guarantee-strong">Garantía de ajustes:</strong> <span data-i18n="guarantee-text">15 días de ajustes gratis después de la entrega.</span></span>
+    </div>
+    <!-- GARANTIA:fin -->
+
+    <div class="precios">
+      <div class="ticket price-card reveal" style="position:relative;">
+        <span class="ticket-no" data-i18n="nivel1-no">Nivel 1</span>
+        <p class="tier" data-i18n="nivel1-tier">Página web</p>
+        <p class="price">$400–$800</p>
+        <p class="monthly" data-i18n="nivel1-monthly">pago único</p>
+        <ul>
+          <li data-i18n="nivel1-li1">Inicio, servicios y contacto</li>
+          <li data-i18n="nivel1-li2">Galería de fotos</li>
+          <li data-i18n="nivel1-li3">Botón directo a WhatsApp</li>
+        </ul>
+      </div>
+      <div class="ticket price-card featured reveal" style="position:relative;">
+        <span class="ticket-no" data-i18n="nivel2-no">Nivel 2</span>
+        <p class="tier" data-i18n="nivel2-tier">Página + citas</p>
+        <p class="price">$1,200–$2,000</p>
+        <p class="monthly" data-i18n="nivel2-monthly">+ $25–$40/mes hosting y soporte</p>
+        <ul>
+          <li data-i18n="nivel2-li1">Todo lo del Nivel 1</li>
+          <li data-i18n="nivel2-li2">Agenda de citas</li>
+          <li data-i18n="nivel2-li3">Clientes organizados</li>
+        </ul>
+      </div>
+      <div class="ticket price-card featured reveal" style="position:relative;">
+        <span class="verified-badge" data-i18n="seal-price">Comprobado — Gil Muffler</span>
+        <span class="ticket-no" style="display:block;" data-i18n="nivel3-no">Nivel 3</span>
+        <p class="tier" data-i18n="nivel3-tier">Sistema completo</p>
+        <p class="price">$2,500–$4,500</p>
+        <p class="monthly" data-i18n="nivel3-monthly">+ $60–$100/mes mantenimiento</p>
+        <ul>
+          <li data-i18n="nivel3-li1">Todo lo del Nivel 2</li>
+          <li data-i18n="nivel3-li2">Facturación e inventario</li>
+          <li data-i18n="nivel3-li3">Reportes de tu negocio</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="cotizador">
+    <div class="section-head">
+      <p class="eyebrow"><span data-i18n="quote-eyebrow">Cotizador rápido</span></p>
+      <h2 data-i18n="quote-h2">Arma tu ticket y mira el estimado</h2>
+    </div>
+    <div class="quote-box reveal">
+      <div class="quote-options">
+        <label class="check">
+          <input type="checkbox" checked disabled>
+          <span data-i18n="quote-opt0">Página web</span>
+          <span class="price-tag" data-i18n="quote-opt0-included">incluida</span>
+        </label>
+        <label class="check">
+          <input type="checkbox" class="quote-check" data-price="900">
+          <span data-i18n="quote-opt1">Agenda de citas</span>
+          <span class="price-tag">+$900</span>
+        </label>
+        <label class="check">
+          <input type="checkbox" class="quote-check" data-price="1800">
+          <span data-i18n="quote-opt2">Facturación e inventario</span>
+          <span class="price-tag">+$1,800</span>
+        </label>
+        <label class="check">
+          <input type="checkbox" class="quote-check" data-price="500">
+          <span data-i18n="quote-opt3">Reportes y varios usuarios</span>
+          <span class="price-tag">+$500</span>
+        </label>
+        <label class="check">
+          <input type="checkbox" class="quote-check" data-price="35" data-monthly="1">
+          <span data-i18n="quote-opt4">Soporte mensual</span>
+          <span class="price-tag">+$35/mes</span>
+        </label>
+      </div>
+      <div class="ticket quote-ticket">        <span class="ticket-no" data-i18n="quote-ticket-no">Cotización estimada</span>
+        <p class="quote-total" id="quote-total">$600</p>
+        <p class="quote-monthly" id="quote-monthly" data-i18n="quote-no-monthly">sin mensualidad</p>
+        <a class="btn-primary" id="quote-whatsapp-btn" href="https://wa.me/19786907277?text=Hola%2C%20quiero%20cotizar%20mi%20sistema%20con%3A%20P%C3%A1gina%20web.%20Total%20estimado%3A%20%24600" target="_blank" rel="noopener" data-i18n="quote-confirm">Confirmar por WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="sobre-mi">
+    <div class="section-head">
+      <p class="eyebrow"><span data-i18n="bio-eyebrow">Quién construye esto</span></p>
+      <h2 data-i18n="bio-h2">Paulino Digital lo hago yo, Luis</h2>
+    </div>
+    <div class="bio-card reveal">
+      <div>
+        <p data-i18n="bio-p">Soy de Lawrence, MA. Empecé construyendo el sistema de Gil's Muffler Inc, también la página de una empresa de paneles solares, y un sistema de reservas para una barbería (Oficio Barber Co.). Me formé en Academia Catalizadora para hacer este trabajo bien, de principio a fin.</p>
+        <a class="bio-badge" href="certificado.pdf" target="_blank" rel="noopener" data-i18n="bio-badge">Certificado — Academia Catalizadora</a>
+      </div>
+      <a class="bio-cert-link" href="certificado.pdf" target="_blank" rel="noopener" aria-label="Ver certificado completo en PDF">
+        <img class="bio-cert-img" src="certificado.jpg" alt="Certificado de título AI Architect, Academia Catalizadora, a nombre de Luis Miguel Vásquez">
+      </a>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="section-head">
+      <p class="eyebrow"><span data-i18n="faq-eyebrow">Preguntas frecuentes</span></p>
+      <h2 data-i18n="faq-h2">Antes de escribirme, quizás esto ya te responde</h2>
+    </div>
+    <div class="faq reveal">
+      <details class="faq-item" open>
+        <summary data-i18n="faq1-q">¿Necesito saber de computadoras para usarlo?</summary>
+        <p data-i18n="faq1-a">No. Te enseño paso a paso y el sistema está pensado para usarse desde el celular, igual que cualquier app.</p>
+      </details>
+      <details class="faq-item">
+        <summary data-i18n="faq2-q">¿Cuánto tiempo toma tener mi sistema listo?</summary>
+        <p data-i18n="faq2-a">Entre 1 y 3 semanas, según el nivel que elijas y qué tan rápido me pases la información de tu negocio.</p>
+      </details>
+      <details class="faq-item">
+        <summary data-i18n="faq3-q">¿Puedo empezar pequeño y crecer después?</summary>
+        <p data-i18n="faq3-a">Sí. Muchos negocios empiezan con la página web y suben de nivel cuando lo necesitan, sin perder nada de lo ya hecho.</p>
+      </details>
+      <details class="faq-item">
+        <summary data-i18n="faq4-q">¿Qué pasa si necesito ayuda después de que esté listo?</summary>
+        <p data-i18n="faq4-a">Los niveles 2 y 3 incluyen soporte mensual, y normalmente te respondo el mismo día por WhatsApp.</p>
+      </details>
+      <details class="faq-item">
+        <summary data-i18n="faq5-q">¿Qué pasa si ya tengo Facebook o Instagram?</summary>
+        <p data-i18n="faq5-a">Se quedan igual. Podemos conectar tu página nueva con tus redes para que todo se vea parte del mismo negocio.</p>
+      </details>
+      <details class="faq-item">
+        <summary data-i18n="faq6-q">¿Cómo se paga?</summary>
+        <p data-i18n="faq6-a">Un depósito del 40% para comenzar y el resto al entregar el proyecto. Acepto Zelle, efectivo o transferencia.</p>
+      </details>
+      <details class="faq-item">
+        <summary data-i18n="faq7-q">¿Mis datos y los de mis clientes están seguros?</summary>
+        <p data-i18n="faq7-a">Sí. Se guardan en una base de datos privada de tu negocio, no en hojas sueltas ni en un Excel compartido.</p>
+      </details>
+    </div>
+  </section>
+
+  <section id="contacto" class="contacto">    <div class="cta-ticket with-form reveal">
+      <div>
+        <p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span><span data-i18n="contacto-eyebrow">Contacto</span></p>
+        <h2 data-i18n="contacto-h2">Empecemos con un diagnóstico, no con una propuesta genérica</h2>
+        <p data-i18n="contacto-p">Cuéntame sobre tu negocio y te respondo con un plan concreto — no un genérico "hablemos".</p>
+        <div class="cta-side" style="text-align:left; margin-top:22px;">
+          <a class="btn-primary" href="https://wa.me/19786907277?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20un%20sistema%20para%20mi%20negocio" target="_blank" rel="noopener" style="width:100%; display:block; text-align:center;" data-i18n="contacto-whatsapp">Escríbeme por WhatsApp</a>
+          <a class="btn-ghost" href="tel:+19786907277" style="width:100%; display:block; text-align:center; margin-top:10px;" data-i18n="btn-call">Llamar</a>
+          <p class="print-only mono" style="margin-top:10px;">(978) 690-7277</p>
+        </div>
+        <p style="margin-top:18px; font-size:0.8rem; color:var(--ink-soft);" data-i18n="contacto-reassure">Te respondo en menos de 24 horas. Tus datos nunca se comparten con terceros.</p>
+      </div>
+      <div class="contact-form-card">
+        <label for="cf-name" data-i18n="cf-name-label">Nombre
+          <input type="text" id="cf-name" autocomplete="name">
+        </label>
+        <label for="cf-business" data-i18n="cf-business-label">Tipo de negocio
+          <input type="text" id="cf-business" placeholder="Ej. taller, barbería..." data-i18n-placeholder="cf-business-placeholder">
+        </label>
+        <label for="cf-need" data-i18n="cf-need-label">¿Qué necesitas?
+          <select id="cf-need">
+            <option value="" data-i18n="cf-need-opt0">Todavía no estoy seguro</option>
+            <option value="Página web" data-i18n="cf-need-opt1">Página web</option>
+            <option value="Agenda de citas" data-i18n="cf-need-opt2">Agenda de citas</option>
+            <option value="Facturación e inventario" data-i18n="cf-need-opt3">Facturación e inventario</option>
+          </select>
+        </label>
+        <label for="cf-level" data-i18n="cf-level-label">Nivel que te interesa
+          <select id="cf-level">
+            <option value="No estoy seguro" data-i18n="cf-level-opt0">No estoy seguro</option>
+            <option value="Nivel 1 - Página web" data-i18n="cf-level-opt1">Nivel 1 · Página web</option>
+            <option value="Nivel 2 - Página + citas" data-i18n="cf-level-opt2">Nivel 2 · Página + citas</option>
+            <option value="Nivel 3 - Sistema completo" data-i18n="cf-level-opt3">Nivel 3 · Sistema completo</option>
+          </select>
+        </label>
+        <button type="button" class="btn-primary" id="cf-submit" style="width:100%;" data-i18n="cf-submit">Enviar por WhatsApp</button>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<a class="floating-whatsapp" id="float-wa" href="https://wa.me/19786907277?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20un%20sistema%20para%20mi%20negocio" target="_blank" rel="noopener" aria-label="Escríbeme por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20l1.4-4.2A8 8 0 1 1 9 18.6z"/><path d="M8.5 10.5c0 3 2.5 5.5 5.5 5.5"/></svg>
+</a>
+
+<footer>Paulino Digital · Lawrence, MA · <a href="tarjeta.html">Tarjeta de presentación</a> · <button type="button" id="share-btn" class="footer-link-btn" data-i18n="share-btn">Compartir esta página</button></footer>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    var toggleBtn = document.getElementById('theme-toggle');
+    if (!toggleBtn) return;
+    var SUN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8 6 18M18 6l1.8-1.8"/></svg>';
+    var MOON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg>';
+    function apply(theme) {
+      if (theme === 'light') {
+        root.setAttribute('data-theme', 'light');
+        toggleBtn.innerHTML = MOON;
+      } else {
+        root.removeAttribute('data-theme');
+        toggleBtn.innerHTML = SUN;
+      }
+    }
+    var saved = null;
+    try { saved = localStorage.getItem('pd-theme'); } catch (e) {}
+    apply(saved === 'light' ? 'light' : 'dark');
+    toggleBtn.addEventListener('click', function () {
+      var next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      apply(next);
+      try { localStorage.setItem('pd-theme', next); } catch (e) {}
+    });
+  })();
+
+  (function () {
+    var canvas = document.getElementById('bg-particles');
+    if (!canvas || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var ctx = canvas.getContext('2d');
+    var hero = canvas.parentElement;
+    var particles = [];
+    var COUNT = 36;
+    function resize() {
+      canvas.width = hero.offsetWidth;
+      canvas.height = hero.offsetHeight;
+    }
+    function makeParticles() {
+      particles = [];
+      for (var i = 0; i < COUNT; i++) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          vx: (Math.random() - 0.5) * 0.25,
+          vy: (Math.random() - 0.5) * 0.25
+        });
+      }
+    }
+    function step() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (var i = 0; i < particles.length; i++) {
+        var p = particles[i];
+        p.x += p.vx; p.y += p.vy;
+        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+      }
+      for (var i = 0; i < particles.length; i++) {
+        for (var j = i + 1; j < particles.length; j++) {
+          var dx = particles[i].x - particles[j].x;
+          var dy = particles[i].y - particles[j].y;
+          var dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 130) {
+            ctx.strokeStyle = 'rgba(212,175,55,' + (0.14 * (1 - dist / 130)) + ')';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.stroke();
+          }
+        }
+        ctx.fillStyle = 'rgba(242,222,154,0.6)';
+        ctx.beginPath();
+        ctx.arc(particles[i].x, particles[i].y, 1.6, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      requestAnimationFrame(step);
+    }
+    resize();
+    makeParticles();
+    window.addEventListener('resize', function () { resize(); makeParticles(); });
+    requestAnimationFrame(step);
+  })();
+
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var els = document.querySelectorAll('.reveal');
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.15 });
+    els.forEach(function(el) { io.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+
+  var currentLang = 'es';
+
+  var TICKETS = {
+    taller: {
+      es: { no: 'N.º 0001 · ORDEN DE SERVICIO', title: "Gil's Muffler Inc",
+        rows: [['Vehículo', "Honda Civic '19"], ['Servicio', 'Sistema completo'], ['Facturas al día', '12 → 0'], ['Estado', 'Activo']] },
+      en: { no: 'No. 0001 · SERVICE ORDER', title: "Gil's Muffler Inc",
+        rows: [['Vehicle', "Honda Civic '19"], ['Service', 'Full system'], ['Invoices up to date', '12 → 0'], ['Status', 'Active']] }
+    },
+    barberia: {
+      es: { no: 'N.º 0002 · CITA CONFIRMADA', title: 'Barbería El Corte',
+        rows: [['Cliente', 'Luis M.'], ['Servicio', 'Corte + barba'], ['Próxima cita', 'Hoy 3:00 PM'], ['Estado', 'Confirmada']] },
+      en: { no: 'No. 0002 · APPOINTMENT CONFIRMED', title: 'El Corte Barbershop',
+        rows: [['Customer', 'Luis M.'], ['Service', 'Haircut + beard'], ['Next appointment', 'Today 3:00 PM'], ['Status', 'Confirmed']] }
+    },
+    negocio: {
+      es: { no: 'N.º 0003 · PEDIDO EN LÍNEA', title: 'Panadería Doña Rosa',
+        rows: [['Pedido', 'Docena de quesitos'], ['Canal', 'WhatsApp'], ['Visitas al mes', '1,204'], ['Estado', 'Entregado']] },
+      en: { no: 'No. 0003 · ONLINE ORDER', title: 'Doña Rosa Bakery',
+        rows: [['Order', 'Dozen pastries'], ['Channel', 'WhatsApp'], ['Visits this month', '1,204'], ['Status', 'Delivered']] }
+    }
+  };
+
+  var currentVariant = 'taller';
+
+  function renderTicket() {
+    var data = TICKETS[currentVariant][currentLang];
+    if (!data) return;
+    document.getElementById('tk-no').textContent = data.no;
+    document.getElementById('tk-title').textContent = data.title;
+    data.rows.forEach(function(pair, i) {
+      document.getElementById('tk-l' + (i + 1)).textContent = pair[0];
+      document.getElementById('tk-v' + (i + 1)).textContent = pair[1];
+    });
+  }
+
+  function showVariant(key) {
+    if (!TICKETS[key]) return;
+    currentVariant = key;
+    renderTicket();
+    document.querySelectorAll('.tab-btn').forEach(function(btn) {
+      var isActive = btn.dataset.variant === key;
+      btn.classList.toggle('active', isActive);
+      btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+    });
+  }
+
+  document.querySelectorAll('.tab-btn').forEach(function(btn) {
+    btn.addEventListener('click', function () { showVariant(btn.dataset.variant); });
+  });
+
+  document.querySelectorAll('.sign[data-variant]').forEach(function(card) {
+    function activate() {
+      showVariant(card.dataset.variant);
+      document.querySelector('.hero').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    card.addEventListener('click', activate);
+    card.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(); }
+    });
+  });
+
+  var range = document.getElementById('compare-range');
+  var clip = document.getElementById('compare-clip');
+  var handle = document.querySelector('.handle');
+  var approvedStamp = document.getElementById('approved-stamp');
+  function updateCompare(v) {
+    clip.style.setProperty('--pos', v + '%');
+    handle.style.left = v + '%';
+    if (approvedStamp) approvedStamp.classList.toggle('show', Number(v) >= 97);
+  }
+  if (range) {
+    range.addEventListener('input', function () { updateCompare(this.value); });
+    updateCompare(range.value);
+  }
+
+  var quoteTotalEl = document.getElementById('quote-total');
+  var quoteMonthlyEl = document.getElementById('quote-monthly');
+  var quoteWhatsappBtn = document.getElementById('quote-whatsapp-btn');
+  function updateQuote() {
+    var total = 600;
+    var monthly = 0;
+    var picked = [I18N['quote-opt0'][currentLang]];
+    document.querySelectorAll('.quote-check').forEach(function (cb) {
+      var price = Number(cb.dataset.price) || 0;
+      if (!cb.checked) return;
+      if (cb.dataset.monthly) monthly += price; else total += price;
+      var key = cb.nextElementSibling && cb.nextElementSibling.getAttribute('data-i18n');
+      if (key && I18N[key]) picked.push(I18N[key][currentLang]);
+    });
+    quoteTotalEl.textContent = '$' + total.toLocaleString('en-US');
+    var totalForMessage = '$' + total.toLocaleString('en-US');
+    if (monthly > 0) {
+      var pre = I18N['quote-monthly-prefix'][currentLang];
+      var suf = I18N['quote-monthly-suffix'][currentLang];
+      quoteMonthlyEl.textContent = pre + monthly + suf;
+      totalForMessage += ' + ' + pre + monthly + suf;
+    } else {
+      quoteMonthlyEl.textContent = I18N['quote-no-monthly'][currentLang];
+    }
+    if (quoteWhatsappBtn) {
+      var intro = currentLang === 'en' ? "Hi, I'd like a quote for my system with: " : 'Hola, quiero cotizar mi sistema con: ';
+      var totalLabel = currentLang === 'en' ? '. Estimated total: ' : '. Total estimado: ';
+      var message = intro + picked.join(', ') + totalLabel + totalForMessage;
+      quoteWhatsappBtn.href = 'https://wa.me/19786907277?text=' + encodeURIComponent(message);
+    }
+  }
+  document.querySelectorAll('.quote-check').forEach(function (cb) {
+    cb.addEventListener('change', updateQuote);
+  });
+
+  var floatWa = document.getElementById('float-wa');
+  var contactoSection = document.getElementById('contacto');
+  var contactoVisible = false;
+  if (contactoSection) {
+    new IntersectionObserver(function (entries) {
+      contactoVisible = entries[0].isIntersecting;
+      refreshFloatWa();
+    }, { threshold: 0.1 }).observe(contactoSection);
+  }
+  function refreshFloatWa() {
+    if (!floatWa) return;
+    var pastHero = window.scrollY > 500;
+    floatWa.classList.toggle('show', pastHero && !contactoVisible);
+  }
+  window.addEventListener('scroll', refreshFloatWa, { passive: true });
+  refreshFloatWa();
+
+  var I18N = {
+    'nav-cta': { es: 'Hablemos', en: "Let's talk" },
+    'skip-link': { es: 'Saltar al contenido', en: 'Skip to content' },
+    'hero-eyebrow': { es: 'Lawrence, MA · sistemas a la medida', en: 'Lawrence, MA · systems built for you' },
+    'hero-h1': { es: 'Tu negocio,<br>organizado <span class="hl">de verdad</span>', en: 'Your business,<br><span class="hl">truly organized</span>', plain: { es: 'Tu negocio, organizado de verdad', en: 'Your business, truly organized' } },
+    'hero-lede': { es: 'Páginas web y sistemas de gestión para talleres, barberías y negocios locales. Se acabaron las facturas perdidas y las citas en un cuaderno.', en: 'Websites and management systems for auto shops, barbershops and local businesses. No more lost invoices or appointments scribbled in a notebook.' },
+    'btn-quote': { es: 'Pide tu cotización', en: 'Get your quote' },
+    'btn-plans': { es: 'Ver planes', en: 'See plans' },
+    'btn-call': { es: 'Llamar', en: 'Call' },
+    'trust-1': { es: '1–3 semanas de entrega', en: '1–3 week turnaround' },
+    'trust-2': { es: 'Soporte directo por WhatsApp', en: 'Direct WhatsApp support' },
+    'trust-3': { es: 'Hecho en Lawrence, MA', en: 'Made in Lawrence, MA' },
+    'tab-taller': { es: 'Taller', en: 'Auto shop' },
+    'tab-barberia': { es: 'Barbería', en: 'Barbershop' },
+    'tab-negocio': { es: 'Negocio local', en: 'Local business' },
+    'seal-hero': { es: 'Sistema<br>activo', en: 'System<br>active' },
+    'rubros-eyebrow': { es: 'Para quién es esto', en: 'Who this is for' },
+    'rubros-h2': { es: 'Si tu negocio vive de clientes recurrentes, esto es para ti', en: 'If your business runs on repeat customers, this is for you' },
+    'rubro1-h3': { es: 'Talleres mecánicos', en: 'Auto repair shops' },
+    'rubro1-p': { es: 'Clientes, facturas e inventario de piezas en un solo lugar, sin papeles sueltos.', en: 'Customers, invoices and parts inventory in one place, no more loose papers.' },
+    'rubro2-h3': { es: 'Barberías y salones', en: 'Barbershops & salons' },
+    'rubro2-p': { es: 'Citas y clientes organizados, sin agenda de papel ni turnos olvidados.', en: 'Appointments and customers organized, no paper calendar or forgotten bookings.' },
+    'rubro3-h3': { es: 'Negocios locales', en: 'Local businesses' },
+    'rubro3-p': { es: 'Presencia profesional en línea, fácil de encontrar y de mantener al día.', en: 'A professional online presence, easy to find and keep up to date.' },
+    'see-demo': { es: 'Ver ejemplo', en: 'See example' },
+    'proceso-eyebrow': { es: 'Cómo funciona', en: 'How it works' },
+    'proceso-h2': { es: 'Tres tickets, un proyecto terminado', en: 'Three tickets, one finished project' },
+    'stub1-h3': { es: 'Hablamos', en: 'We talk' },
+    'stub1-p': { es: 'Me cuentas qué necesita tu negocio. Gratis, sin compromiso.', en: 'Tell me what your business needs. Free, no commitment.' },
+    'stub2-h3': { es: 'Lo construyo', en: 'I build it' },
+    'stub2-p': { es: 'Armo tu página o sistema en 1 a 3 semanas.', en: 'I put together your site or system in 1 to 3 weeks.' },
+    'stub3-h3': { es: 'Tú lo usas', en: 'You use it' },
+    'stub3-p': { es: 'Te enseño a usarlo y te doy soporte continuo.', en: 'I teach you how to use it and give you ongoing support.' },
+    'caso-eyebrow': { es: 'Caso real', en: 'Real case' },
+    'caso-h2': { es: "Gil's Muffler Inc dejó el papel atrás", en: "Gil's Muffler Inc left paper behind" },
+    'label-after': { es: 'Ahora', en: 'Now' },
+    'caso-a1': { es: 'Facturas pendientes', en: 'Pending invoices' },
+    'caso-a2': { es: 'Clientes registrados', en: 'Registered customers' },
+    'caso-a3': { es: 'Piezas bajo stock', en: 'Parts low in stock' },
+    'caso-a3v': { es: 'Alerta automática', en: 'Automatic alert' },
+    'caso-a4': { es: 'Todo', en: 'Everything' },
+    'caso-a4v': { es: 'Desde el celular', en: 'From your phone' },
+    'label-before': { es: 'Antes', en: 'Before' },
+    'caso-b1': { es: 'Factura #0231 — ¿dónde quedó?', en: 'Invoice #0231 — where did it go?' },
+    'caso-b2': { es: 'Cliente Ramírez — ¿pagó ya?', en: 'Customer Ramírez — did he pay yet?' },
+    'caso-b3': { es: 'Piezas de freno — ¿cuántas quedan?', en: 'Brake parts — how many are left?' },
+    'caso-b4': { es: 'Todo en cuadernos y post-its.', en: 'Everything in notebooks and post-its.' },
+    'compare-hint': { es: 'Desliza para comparar', en: 'Drag to compare' },
+    'quote-text': { es: '"Ya no se pierden facturas ni se le olvida a nadie quién debe qué."', en: '"No more lost invoices, and nobody forgets who owes what."' },
+    'quote-source': { es: "— Andrés Gil, dueño de Gil's Muffler Inc", en: "— Andrés Gil, owner of Gil's Muffler Inc" },
+    'case2-badge': { es: 'Otro proyecto real', en: 'Another real project' },
+    'case2-text': { es: 'También construí la página web de una empresa de instalación de paneles solares.', en: 'I also built the website for a solar panel installation company.' },
+    'case3-badge': { es: 'Otro proyecto real', en: 'Another real project' },
+    'case3-text': { es: 'También construí un sistema de reservas en línea para una barbería, Oficio Barber Co., con citas y base de datos en tiempo real.', en: 'I also built an online booking system for a barbershop, Oficio Barber Co., with real-time appointments and a database.' },
+    'shots-label': { es: 'Así se ve el sistema por dentro', en: "Here's what the system looks like inside" },
+    'shot1-caption': { es: 'Panel principal: todo el negocio de un vistazo', en: 'Main dashboard: your whole business at a glance' },
+    'shot2-caption': { es: 'Configuración: tu marca en cada factura', en: 'Settings: your brand on every invoice' },
+    'func-eyebrow': { es: 'Todo incluido', en: 'All included' },
+    'func-h2': { es: 'Funciones que trae tu sistema', en: 'What your system includes' },
+    'func1-h': { es: 'Aviso de mantenimiento', en: 'Maintenance reminders' },
+    'func1-p': { es: 'Le avisas a tus clientes cuándo les toca su próximo servicio, automáticamente.', en: 'Automatically remind customers when their next service is due.' },
+    'func2-h': { es: 'Varios usuarios', en: 'Multiple users' },
+    'func2-p': { es: 'Tus empleados pueden tener su propio acceso, no solo tú.', en: 'Your employees can have their own login, not just you.' },
+    'func3-h': { es: 'Historial por cliente', en: 'Customer history' },
+    'func3-p': { es: 'Ve todo lo que un cliente ha pedido y cuánto ha gastado.', en: 'See everything a customer has ordered and how much they’ve spent.' },
+    'func4-h': { es: 'Facturas por WhatsApp', en: 'Invoices by WhatsApp' },
+    'func4-p': { es: 'Envía facturas directo por WhatsApp o correo, sin imprimir nada.', en: 'Send invoices straight through WhatsApp or email, nothing to print.' },
+    'func5-h': { es: 'Respaldo automático', en: 'Automatic backup' },
+    'func5-p': { es: 'Tu información se guarda sola, todos los días.', en: 'Your data saves itself, every day.' },
+    'func6-h': { es: 'Calendario visual', en: 'Visual calendar' },
+    'func6-p': { es: 'Ve todas las citas del día de un vistazo.', en: 'See the whole day’s appointments at a glance.' },
+    'func7-h': { es: 'Reportes en PDF/Excel', en: 'PDF/Excel reports' },
+    'func7-p': { es: 'Exporta tus reportes para tu contador en un clic.', en: 'Export your reports for your accountant in one click.' },
+    'func8-h': { es: 'Funciona sin internet', en: 'Works without internet' },
+    'func8-p': { es: 'Puedes seguir trabajando aunque se caiga la conexión un momento.', en: 'Keep working even if the connection drops for a moment.' },
+    'vs-eyebrow': { es: 'La diferencia', en: 'The difference' },
+    'vs-h2': { es: 'Con sistema vs. sin sistema', en: 'With a system vs. without one' },
+    'vs-bad-head': { es: 'Sin sistema', en: 'Without a system' },
+    'vs-bad-1': { es: 'Facturas en papel, a veces perdidas', en: 'Paper invoices, sometimes lost' },
+    'vs-bad-2': { es: 'Citas anotadas en un cuaderno', en: 'Appointments written in a notebook' },
+    'vs-bad-3': { es: 'No sabes cuánto stock te queda', en: 'You don’t know how much stock is left' },
+    'vs-bad-4': { es: 'Cada empleado hace las cosas a su manera', en: 'Every employee does things their own way' },
+    'vs-bad-5': { es: 'Si se pierde el cuaderno, se pierde todo', en: 'If the notebook is lost, everything is lost' },
+    'vs-good-head': { es: 'Con sistema', en: 'With a system' },
+    'vs-good-1': { es: 'Facturas guardadas y siempre a la mano', en: 'Invoices saved and always on hand' },
+    'vs-good-2': { es: 'Citas organizadas y con recordatorio', en: 'Appointments organized with reminders' },
+    'vs-good-3': { es: 'Alertas cuando algo se está por acabar', en: 'Alerts when something is about to run out' },
+    'vs-good-4': { es: 'Todo el equipo usa el mismo sistema', en: 'Your whole team uses the same system' },
+    'vs-good-5': { es: 'Todo respaldado automáticamente', en: 'Everything backed up automatically' },
+    'precios-eyebrow': { es: 'Planes', en: 'Plans' },
+    'precios-h2': { es: 'Un nivel para cada etapa de tu negocio', en: 'A level for every stage of your business' },
+    'guarantee-strong': { es: 'Garantía de ajustes:', en: 'Adjustment guarantee:' },
+    'guarantee-text': { es: '15 días de ajustes gratis después de la entrega.', en: '15 days of free adjustments after delivery.' },
+    'nivel1-no': { es: 'Nivel 1', en: 'Level 1' },
+    'nivel1-tier': { es: 'Página web', en: 'Website' },
+    'nivel1-monthly': { es: 'pago único', en: 'one-time payment' },
+    'nivel1-li1': { es: 'Inicio, servicios y contacto', en: 'Home, services and contact' },
+    'nivel1-li2': { es: 'Galería de fotos', en: 'Photo gallery' },
+    'nivel1-li3': { es: 'Botón directo a WhatsApp', en: 'Direct WhatsApp button' },
+    'nivel2-no': { es: 'Nivel 2', en: 'Level 2' },
+    'nivel2-tier': { es: 'Página + citas', en: 'Website + booking' },
+    'nivel2-monthly': { es: '+ $25–$40/mes hosting y soporte', en: '+ $25–$40/mo hosting and support' },
+    'nivel2-li1': { es: 'Todo lo del Nivel 1', en: 'Everything in Level 1' },
+    'nivel2-li2': { es: 'Agenda de citas', en: 'Appointment booking' },
+    'nivel2-li3': { es: 'Clientes organizados', en: 'Organized customers' },
+    'seal-price': { es: 'Comprobado — Gil Muffler', en: 'Proven — Gil Muffler' },
+    'nivel3-no': { es: 'Nivel 3', en: 'Level 3' },
+    'nivel3-tier': { es: 'Sistema completo', en: 'Full system' },
+    'nivel3-monthly': { es: '+ $60–$100/mes mantenimiento', en: '+ $60–$100/mo maintenance' },
+    'nivel3-li1': { es: 'Todo lo del Nivel 2', en: 'Everything in Level 2' },
+    'nivel3-li2': { es: 'Facturación e inventario', en: 'Invoicing and inventory' },
+    'nivel3-li3': { es: 'Reportes de tu negocio', en: 'Reports for your business' },
+    'bio-eyebrow': { es: 'Quién construye esto', en: 'Who’s behind this' },
+    'bio-h2': { es: 'Paulino Digital lo hago yo, Luis', en: 'Paulino Digital is built by me, Luis' },
+    'bio-p': { es: 'Soy de Lawrence, MA. Empecé construyendo el sistema de Gil’s Muffler Inc, también la página de una empresa de paneles solares, y un sistema de reservas para una barbería (Oficio Barber Co.). Me formé en Academia Catalizadora para hacer este trabajo bien, de principio a fin.', en: 'I’m from Lawrence, MA. I started by building the system for Gil’s Muffler Inc, also a website for a solar panel company, and a booking system for a barbershop (Oficio Barber Co.). I trained through Academia Catalizadora to do this work right, start to finish.' },
+    'bio-badge': { es: 'Certificado — Academia Catalizadora', en: 'Certified — Academia Catalizadora' },
+    'faq-eyebrow': { es: 'Preguntas frecuentes', en: 'Frequently asked questions' },
+    'faq-h2': { es: 'Antes de escribirme, quizás esto ya te responde', en: 'Before you write to me, this might already answer it' },
+    'faq1-q': { es: '¿Necesito saber de computadoras para usarlo?', en: 'Do I need to know computers to use it?' },
+    'faq1-a': { es: 'No. Te enseño paso a paso y el sistema está pensado para usarse desde el celular, igual que cualquier app.', en: 'No. I’ll walk you through it step by step, and it’s designed to be used from your phone, just like any app.' },
+    'faq2-q': { es: '¿Cuánto tiempo toma tener mi sistema listo?', en: 'How long until my system is ready?' },
+    'faq2-a': { es: 'Entre 1 y 3 semanas, según el nivel que elijas y qué tan rápido me pases la información de tu negocio.', en: 'Between 1 and 3 weeks, depending on the level you choose and how quickly you send me your business info.' },
+    'faq3-q': { es: '¿Puedo empezar pequeño y crecer después?', en: 'Can I start small and grow later?' },
+    'faq3-a': { es: 'Sí. Muchos negocios empiezan con la página web y suben de nivel cuando lo necesitan, sin perder nada de lo ya hecho.', en: 'Yes. Many businesses start with the website and upgrade later when they need to, without losing anything already built.' },
+    'faq4-q': { es: '¿Qué pasa si necesito ayuda después de que esté listo?', en: 'What if I need help after it’s done?' },
+    'faq4-a': { es: 'Los niveles 2 y 3 incluyen soporte mensual, y normalmente te respondo el mismo día por WhatsApp.', en: 'Levels 2 and 3 include monthly support, and I usually reply the same day over WhatsApp.' },
+    'faq5-q': { es: '¿Qué pasa si ya tengo Facebook o Instagram?', en: 'What if I already have Facebook or Instagram?' },
+    'faq5-a': { es: 'Se quedan igual. Podemos conectar tu página nueva con tus redes para que todo se vea parte del mismo negocio.', en: 'They stay just as they are. We can connect your new site with your social pages so everything feels like one business.' },
+    'faq6-q': { es: '¿Cómo se paga?', en: 'How do I pay?' },
+    'faq6-a': { es: 'Un depósito del 40% para comenzar y el resto al entregar el proyecto. Acepto Zelle, efectivo o transferencia.', en: 'A 40% deposit to get started and the rest when the project is delivered. I accept Zelle, cash or bank transfer.' },
+    'faq7-q': { es: '¿Mis datos y los de mis clientes están seguros?', en: 'Is my data and my customers’ data safe?' },
+    'faq7-a': { es: 'Sí. Se guardan en una base de datos privada de tu negocio, no en hojas sueltas ni en un Excel compartido.', en: 'Yes. It’s stored in a private database for your business, not in loose papers or a shared spreadsheet.' },
+    'contacto-eyebrow': { es: 'Contacto', en: 'Contact' },
+    'contacto-h2': { es: 'Empecemos con un diagnóstico, no con una propuesta genérica', en: "Let's start with a diagnosis, not a generic pitch" },
+    'contacto-p': { es: 'Cuéntame sobre tu negocio y te respondo con un plan concreto — no un genérico "hablemos".', en: 'Tell me about your business and I\'ll reply with a concrete plan — not a generic "let\'s talk".' },
+    'contacto-reassure': { es: 'Te respondo en menos de 24 horas. Tus datos nunca se comparten con terceros.', en: 'I reply within 24 hours. Your info is never shared with third parties.' },
+    'cf-name-label': { es: 'Nombre', en: 'Name' },
+    'cf-business-label': { es: 'Tipo de negocio', en: 'Type of business' },
+    'cf-business-placeholder': { es: 'Ej. taller, barbería...', en: 'E.g. auto shop, barbershop...' },
+    'cf-need-label': { es: '¿Qué necesitas?', en: 'What do you need?' },
+    'cf-need-opt0': { es: 'Todavía no estoy seguro', en: "I'm not sure yet" },
+    'cf-need-opt1': { es: 'Página web', en: 'Website' },
+    'cf-need-opt2': { es: 'Agenda de citas', en: 'Appointment booking' },
+    'cf-need-opt3': { es: 'Facturación e inventario', en: 'Invoicing and inventory' },
+    'cf-level-label': { es: 'Nivel que te interesa', en: 'Level you\'re interested in' },
+    'cf-level-opt0': { es: 'No estoy seguro', en: 'Not sure' },
+    'cf-level-opt1': { es: 'Nivel 1 · Página web', en: 'Level 1 · Website' },
+    'cf-level-opt2': { es: 'Nivel 2 · Página + citas', en: 'Level 2 · Website + booking' },
+    'cf-level-opt3': { es: 'Nivel 3 · Sistema completo', en: 'Level 3 · Full system' },
+    'cf-submit': { es: 'Enviar por WhatsApp', en: 'Send via WhatsApp' },
+    'contacto-whatsapp': { es: 'Escríbeme por WhatsApp', en: 'Message me on WhatsApp' },
+    'approved-text': { es: 'Aprobado', en: 'Approved' },
+    'quote-eyebrow': { es: 'Cotizador rápido', en: 'Quick quote builder' },
+    'quote-h2': { es: 'Arma tu ticket y mira el estimado', en: 'Build your ticket and see the estimate' },
+    'quote-opt0': { es: 'Página web', en: 'Website' },
+    'quote-opt0-included': { es: 'incluida', en: 'included' },
+    'quote-opt1': { es: 'Agenda de citas', en: 'Appointment booking' },
+    'quote-opt2': { es: 'Facturación e inventario', en: 'Invoicing and inventory' },
+    'quote-opt3': { es: 'Reportes y varios usuarios', en: 'Reports and multiple users' },
+    'quote-opt4': { es: 'Soporte mensual', en: 'Monthly support' },
+    'quote-ticket-no': { es: 'Cotización estimada', en: 'Estimated quote' },
+    'quote-no-monthly': { es: 'sin mensualidad', en: 'no monthly fee' },
+    'quote-monthly-prefix': { es: '+ $', en: '+ $' },
+    'quote-monthly-suffix': { es: '/mes', en: '/mo' },
+    'quote-confirm': { es: 'Confirmar por WhatsApp', en: 'Confirm on WhatsApp' },
+    'share-btn': { es: 'Compartir esta página', en: 'Share this page' },
+    'share-copied': { es: '¡Link copiado!', en: 'Link copied!' },
+    'custom-lead': { es: '¿Tu negocio no está en la lista?', en: 'Don’t see your business type?' },
+    'custom-placeholder': { es: 'Escribe tu tipo de negocio, ej. lavandería', en: 'Type your business type, e.g. laundromat' },
+    'custom-btn': { es: 'Generar ejemplo', en: 'Generate example' },
+    'custom-result-no': { es: 'Ejemplo generado', en: 'Generated example' },
+    'custom-r1': { es: 'Clientes', en: 'Customers' },
+    'custom-r1v': { es: 'Organizados en un solo lugar', en: 'Organized in one place' },
+    'custom-r2': { es: 'Citas o pedidos', en: 'Appointments or orders' },
+    'custom-r2v': { es: 'Sin agenda de papel', en: 'No paper calendar' },
+    'custom-r3': { es: 'Pagos', en: 'Payments' },
+    'custom-r3v': { es: 'Facturas siempre a la mano', en: 'Invoices always on hand' },
+    'custom-r4': { es: 'Estado', en: 'Status' },
+    'custom-r4v': { es: 'Listo para ti', en: 'Ready for you' },
+    'ind-eyebrow': { es: 'Para quién trabajo', en: 'Who I work with' },
+    'ind-h2': { es: 'Tipos de negocio que puedo digitalizar', en: 'Types of business I can digitize' },
+    'ind-lede': { es: 'Ya construí sistemas reales para un taller mecánico, una empresa de paneles solares y una barbería — y estoy listo para ayudar a estos otros tipos de negocio también.', en: 'I already built real systems for an auto shop, a solar panel company and a barbershop — and I\'m ready to help these other types of business too.' },
+    'ind1': { es: 'Talleres mecánicos', en: 'Auto repair shops' },
+    'ind2': { es: 'Barberías y salones', en: 'Barbershops & salons' },
+    'ind3': { es: 'Negocios locales', en: 'Local businesses' },
+    'ind4': { es: 'Ecommerce', en: 'Ecommerce' },
+    'ind5': { es: 'Salud', en: 'Healthcare' },
+    'ind6': { es: 'Servicios profesionales', en: 'Professional services' },
+    'ind7': { es: 'Gastronomía', en: 'Restaurants' },
+    'ind8': { es: 'Inmobiliario', en: 'Real estate' },
+    'ia-eyebrow': { es: 'Inteligencia artificial', en: 'Artificial intelligence' },
+    'ia-h2': { es: 'Un equipo de agentes de IA, trabajando 24/7', en: 'A team of AI agents, working 24/7' },
+    'ia-lede': { es: 'Cada agente tiene un rol específico — se integran entre sí para que tú solo hables con el cliente que ya está listo para avanzar.', en: 'Each agent has a specific role — they work together so you only talk to the customer who is already ready to move forward.' },
+    'ia1-h': { es: 'Agente de Ventas', en: 'Sales Agent' },
+    'ia1-p': { es: 'Responde y agenda apenas te escribe un cliente nuevo por WhatsApp.', en: 'Replies and books an appointment as soon as a new customer messages you on WhatsApp.' },
+    'ia1-kpi': { es: 'KPI: % agendado sin que tú contestes', en: 'KPI: % booked without you replying' },
+    'ia2-h': { es: 'Agente de Atención', en: 'Support Agent' },
+    'ia2-p': { es: 'Responde las preguntas más comunes de tus clientes activos, al instante.', en: 'Answers your active customers\' most common questions, instantly.' },
+    'ia2-kpi': { es: 'KPI: tiempo de primera respuesta', en: 'KPI: first response time' },
+    'ia3-h': { es: 'Agente de Soporte', en: 'Help Agent' },
+    'ia3-p': { es: 'Resuelve dudas simples de tus clientes sin que tengas que intervenir.', en: 'Resolves simple customer questions without you having to step in.' },
+    'ia3-kpi': { es: 'KPI: % resuelto sin tu ayuda', en: 'KPI: % resolved without your help' },
+    'ia4-h': { es: 'Agente de Marketing', en: 'Marketing Agent' },
+    'ia4-p': { es: 'Te ayuda a generar ideas y textos para promocionar tu negocio.', en: 'Helps you generate ideas and copy to promote your business.' },
+    'ia4-kpi': { es: 'KPI: piezas generadas por semana', en: 'KPI: pieces generated per week' },
+    'ia5-h': { es: 'Agente Comercial', en: 'Deal Agent' },
+    'ia5-p': { es: 'Prioriza tus mensajes para que sepas a quién responder primero.', en: 'Prioritizes your messages so you know who to reply to first.' },
+    'ia5-kpi': { es: 'KPI: tiempo de mensaje a respuesta', en: 'KPI: message-to-reply time' },
+    'ia6-h': { es: 'Agente para WhatsApp', en: 'WhatsApp Agent' },
+    'ia6-p': { es: 'Lleva la conversación completa con tu cliente, desde la pregunta hasta la cita agendada.', en: 'Handles the full conversation with your customer, from the first question to the booked appointment.' },
+    'ia6-kpi': { es: 'KPI: % resuelto sin que intervengas', en: 'KPI: % resolved without you stepping in' }
+  };
+
+  function applyLang(lang) {
+    currentLang = lang;
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-i18n]').forEach(function (el) {
+      var entry = I18N[el.getAttribute('data-i18n')];
+      if (entry) el.textContent = entry[lang] || entry.es;
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(function (el) {
+      var entry = I18N[el.getAttribute('data-i18n-html')];
+      if (!entry) return;
+      el.innerHTML = entry[lang] || entry.es;
+      if (entry.plain) el.setAttribute('data-text', entry.plain[lang] || entry.plain.es);
+    });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(function (el) {
+      var entry = I18N[el.getAttribute('data-i18n-placeholder')];
+      if (entry) el.setAttribute('placeholder', entry[lang] || entry.es);
+    });
+    document.querySelectorAll('.lang-btn').forEach(function (b) {
+      b.classList.toggle('active', b.dataset.lang === lang);
+    });
+    renderTicket();
+    updateQuote();
+  }
+
+  document.querySelectorAll('.lang-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () { applyLang(btn.dataset.lang); });
+  });
+
+  var customInput = document.getElementById('custom-business');
+  var customBtn = document.getElementById('custom-generate');
+  var customResult = document.getElementById('custom-result');
+  var customTitle = document.getElementById('custom-result-title');
+  if (customBtn) {
+    customBtn.addEventListener('click', function () {
+      var val = (customInput.value || '').trim();
+      var prefix = currentLang === 'en' ? 'System for ' : 'Sistema para ';
+      var fallback = currentLang === 'en' ? 'your business' : 'tu negocio';
+      customTitle.textContent = prefix + (val || fallback);
+      customResult.hidden = false;
+    });
+  }
+
+  var shareBtn = document.getElementById('share-btn');
+  if (shareBtn) {
+    shareBtn.addEventListener('click', function () {
+      var shareData = { title: 'Paulino Digital', url: location.href };
+      if (navigator.share) {
+        navigator.share(shareData).catch(function () {});
+      } else if (navigator.clipboard) {
+        navigator.clipboard.writeText(location.href).then(function () {
+          shareBtn.textContent = I18N['share-copied'][currentLang];
+          setTimeout(function () { shareBtn.textContent = I18N['share-btn'][currentLang]; }, 2000);
+        });
+      }
+    });
+  }
+
+  var cfSubmit = document.getElementById('cf-submit');
+  if (cfSubmit) {
+    cfSubmit.addEventListener('click', function () {
+      var name = document.getElementById('cf-name').value.trim();
+      var business = document.getElementById('cf-business').value.trim();
+      var need = document.getElementById('cf-need').value;
+      var level = document.getElementById('cf-level').value;
+      var lines = currentLang === 'en'
+        ? ['Hi, I want a diagnosis for my business.']
+        : ['Hola, quiero un diagnóstico para mi negocio.'];
+      if (name) lines.push((currentLang === 'en' ? 'Name: ' : 'Nombre: ') + name);
+      if (business) lines.push((currentLang === 'en' ? 'Business: ' : 'Negocio: ') + business);
+      if (need) lines.push((currentLang === 'en' ? 'Needs: ' : 'Necesita: ') + need);
+      lines.push((currentLang === 'en' ? 'Interested level: ' : 'Nivel de interés: ') + level);
+      var message = lines.join('\n');
+      window.open('https://wa.me/19786907277?text=' + encodeURIComponent(message), '_blank', 'noopener');
+    });
+  }
+</script>
